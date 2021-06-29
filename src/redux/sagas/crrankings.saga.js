@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { all, takeLatest } from 'redux-saga/effects';
+import { all, put, takeLatest } from 'redux-saga/effects';
 
 //create a function to get CR players from database
 function* fetchCrPlayers () {
@@ -7,6 +7,11 @@ function* fetchCrPlayers () {
     try {
         const response = yield axios.get('/api/consensus-rankings')
         console.log(response.data);
+        //send the data to a reducer
+        yield put({
+            type: 'SET_CR_PLAYERS',
+            payload: response.data
+        })
     }
     catch (err) {
         console.log('fetchCrPlayers has an error', err);
