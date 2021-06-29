@@ -26,12 +26,12 @@ LIST OF COMPONENTS
 
     [ ] - Client Side
         [ ] - Welcome (username) banner greeting user
-        [ ] -  Need a nav bar underneath with links to Home, Co-Manager Rankings, My Rankings, My Watchlist
+        [ ] -  Need a nav bar underneath with links to Home, Consensus Rankings, My Rankings, My Watchlist
         [ ] - Will need a GET route to get Top-5 fantasy finishers (PPR) of 2020 and display on DOM
         [ ] - Will need saga and reducer to store it
             [ ] - Viewable by scrolling beginning with QB, RB, WR, TE
 
-[ ] - Co-Manager Rankings
+[ ] - Consensus Rankings
     [ ] - Server Side
         [ ] - Will need GET route for rankings to populate table
             [ ] - Will probably need a seperate GET route per position
@@ -46,14 +46,14 @@ LIST OF COMPONENTS
 [ ] - My Rankings
     [ ] - Server Side
         [ ] - Will need GET routes for populated table (per position)
-        [ ] - Same table as in CMR, but this time add button that allows user to add player to My Rankings table
+        [ ] - Same table as in CR, but this time add button that allows user to add player to My Rankings table
             [ ] - Will need a POST route for this part
         [ ] - Will need PUT and DELETE routes for the My Rankings table functionality
         [ ] - Will need a POST route to add a player from CMR table to My Watchlist table
 
     [ ] - Client Side
         [ ] - Title followed by nav bar
-        [ ] - Will need GET routes by position for CMR table
+        [ ] - Will need GET routes by position for CR table
         [ ] - Will need an add button and POST route to POST to My Rankings table from CMR table
         [ ] - My Rankings Table
             [ ] - Need a form above the table to add player
