@@ -2,12 +2,14 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+
 /**
  * GET route template
  */
 router.get('/', (req, res) => {
   // GET route code here
   console.log('in get c-r rankings get router');
+  if(req.isAuthenticated()) {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
   WHERE "user_id" is NULL
@@ -19,6 +21,9 @@ router.get('/', (req, res) => {
     console.log("Error in server side GET:", err);
     res.sendStatus(500);
   })
+} else {
+  res.sendStatus(403);
+}
 });
 
 /**
