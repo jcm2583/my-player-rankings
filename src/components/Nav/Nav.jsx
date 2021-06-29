@@ -23,9 +23,9 @@ function Nav() {
         <h2 className="nav-title">Prime Solo Project</h2>
       </Link>
       <div>
-        <Link className="navLink" to={loginLinkData.path}>
+        {/* <Link className="navLink" to={loginLinkData.path}>
           {loginLinkData.text}
-        </Link>
+        </Link> */}
 
         {user.id && (
           <>

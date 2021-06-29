@@ -1,14 +1,14 @@
 LIST OF COMPONENTS
 
-[ ] - Login Page
-    [ ] - Server Side
-        [ ] - Check that everything provided is working
-        [ ] - Use Postman to login
+[ x ] - Login Page
+    [ x ] - Server Side
+        [ x ] - Check that everything provided is working
+        [ x ] - Use Postman to login
 
     [ ] - Client Side
         [ ] - Need title and description of app (specify dynasty rankings)
-        [ ] - Have Login and Register button
-        [ ] - Register button goes to seperate page to register
+        [ x ] - Have Login and Register button
+        [ x ] - Register button goes to seperate page to register
         [ ] - Once logged in, direct user to home page
 
 [ ] - Register Page
