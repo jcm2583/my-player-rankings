@@ -13,9 +13,6 @@ function ConsensusRankings () {
     const dispatch = useDispatch();
     //bring in consensus rankings player list from store
     const players = useSelector(store => store.crPlayerReducer)
-    
-    //create a local state to capture what the user clicks on
-    const [position, setPosition] = useState('');
 
     useEffect(() => {
         dispatch({
@@ -103,6 +100,7 @@ function ConsensusRankings () {
                         <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
+                        <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

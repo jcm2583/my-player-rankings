@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { all, put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
 //create a function to get CR players from database
 function* fetchCrPlayers (action) {

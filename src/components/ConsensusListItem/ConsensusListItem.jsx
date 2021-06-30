@@ -1,7 +1,11 @@
 import {TableCell, TableRow, Typography} from '@material-ui/core';
-
+import './ConsensusListItem.css'
 
 function ConsensusListItem ({player}) {
+
+    const addPlayer = () => {
+        console.log('add player');
+    }
 
     return (
         <TableRow>
@@ -12,6 +16,7 @@ function ConsensusListItem ({player}) {
              >{player?.first_name} {player?.last_name}</a><Typography>#{player?.number}</Typography></TableCell>
             <TableCell>{player?.team}</TableCell>
             <TableCell>{player?.position_rank}</TableCell>
+            <TableCell><button className="buttonDisplay"onClick={addPlayer}>Add Player</button></TableCell>
         </TableRow>
     )
 }
