@@ -1,14 +1,18 @@
+import {TableCell, TableRow, Typography} from '@material-ui/core';
+
+
 function ConsensusListItem ({player}) {
 
     return (
-        <tr>
-            <td>{player.overall_rank}</td>
-            <td>{player.first_name} {player.last_name}</td>
-            <td>{player.number}</td>
-            <td>{player.team}</td>
-            <td>{player.position_rank}</td>
-            <td><a href={player.stats_url} target="_blank">{player.stats_url}</a></td>
-        </tr>
+        <TableRow>
+            <TableCell>{player.overall_rank}</TableCell>
+            <TableCell><a href={player.stats_url}
+             target="_blank" 
+             className="playerLink"
+             >{player.first_name} {player.last_name}</a><Typography>#{player.number}</Typography></TableCell>
+            <TableCell>{player.team}</TableCell>
+            <TableCell>{player.position_rank}</TableCell>
+        </TableRow>
     )
 }
 

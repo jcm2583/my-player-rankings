@@ -1,23 +1,16 @@
-a {
+.centerTable {
+    text-align: center;
+}
+
+.playerLink {
     text-decoration: none;
 }
 
-a, a:visited {
-    color: blue;
-}
-
-a:hover {
+.playerLink:hover {
     color: navy;
 }
 
-table {
-    border-collapse: collapse;
-    min-width: 1000px;
-    margin: 0 auto;
+.playerLink:visited {
+    color: blue;
 }
 
-th, td {
-    text-align: left;
-    padding: 8px;
-    border: 1px solid #ddd;
-}
