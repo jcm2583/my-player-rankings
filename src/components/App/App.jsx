@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
+import ConsensusRankings from '../ConsensusRankings/ConsensusRankings';
 
 function App() {
   const dispatch = useDispatch();
@@ -102,6 +103,12 @@ function App() {
             <LandingPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/consensus-rankings"
+          >
+            <ConsensusRankings />
+          </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
