@@ -5,7 +5,7 @@ const router = express.Router();
 //Will need 5 different get routes depending on position
 
 //All players
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
   // GET route code here
   console.log('in get c-r rankings get router');
   if(req.isAuthenticated()) {

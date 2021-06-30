@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import ConsensusListItem from '../ConsensusListItem/ConsensusListItem';
 import './ConsensusRankings.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,9 +14,13 @@ function ConsensusRankings () {
     //bring in consensus rankings player list from store
     const players = useSelector(store => store.crPlayerReducer)
     
+    //create a local state to capture what the user clicks on
+    const [position, setPosition] = useState('');
+
     useEffect(() => {
         dispatch({
             type: 'FETCH_CR_PLAYERS',
+            payload: 'all'
         });
     }, []);
 
@@ -37,24 +41,59 @@ function ConsensusRankings () {
         }
     })
 
-    const fetchQB = () => {
-        dispatch ({
-            type: 'FETCH_CR_QB'
+    const classes = useStyles();
+
+    const fetchAll = () => {
+        //dispatch to collect data on all players
+        dispatch({
+            type: 'FETCH_CR_PLAYERS',
+            payload: 'all'
         })
     }
 
-    const classes = useStyles();
+    const fetchQb = () => {
+        //dispatch to collect qb data
+        dispatch({
+            type: 'FETCH_CR_PLAYERS',
+            payload: 'qb'
+        })
+    }
+
+    const fetchRb = () => {
+        //dispatch to collect rb data
+        dispatch({
+            type: 'FETCH_CR_PLAYERS',
+            payload: 'rb'
+        })
+    }
+
+    const fetchWr = () => {
+        //dispatch to collect wr data
+        dispatch({
+            type: 'FETCH_CR_PLAYERS',
+            payload: 'wr'
+        })
+    }
+
+    const fetchTe = () => {
+        //dispatch to collect te data
+        dispatch({
+            type: 'FETCH_CR_PLAYERS',
+            payload: 'te'
+        })
+    }
+    
 
     return ( 
     <div>
         <div className="centerTable">
             <h2>Dynasty: Consensus Ranked Players</h2>
             <Breadcrumbs className="breadcrumbs">
-            <Link color="inherit" href="">All</Link>
-            <Link color="inherit" href="">QB</Link>
-            <Link color="inherit" href="">RB</Link>
-            <Link color="inherit" href="">WR</Link>
-            <Link color="inherit" href="">TE</Link>
+            <Link color="inherit" onClick={fetchAll}>All</Link>
+            <Link color="inherit" onClick={fetchQb}>QB</Link>
+            <Link color="inherit" onClick={fetchRb}>RB</Link>
+            <Link color="inherit" onClick={fetchWr}>WR</Link>
+            <Link color="inherit" onClick={fetchTe}>TE</Link>
             </Breadcrumbs>
             <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table>
