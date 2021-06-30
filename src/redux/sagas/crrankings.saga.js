@@ -2,8 +2,9 @@ import axios from 'axios';
 import { all, put, takeLatest } from 'redux-saga/effects';
 
 //create a function to get CR players from database
-function* fetchCrPlayers () {
+function* fetchCrPlayers (action) {
     //use axios to fetch CR players
+    console.log(action.payload);
     try {
         const response = yield axios.get('/api/consensus-rankings')
         console.log(response.data);

@@ -26,6 +26,27 @@ router.get('/', (req, res) => {
 }
 });
 
+//create a router to get Quarterbacks only
+router.get('/qb', (req, res) => {
+  // GET route code here
+  console.log('in qb rankings get router');
+  if(req.isAuthenticated()) {
+  // Define query text to get from server
+  const queryText = `SELECT * FROM "players"
+  WHERE "user_id" is NULL AND "position" = 'QB'
+  ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
+  // use pool to retrieve the data
+  pool.query(queryText).then(result => {
+    res.send(result.rows);
+  }).catch( err => {
+    console.log("Error in server side GET:", err);
+    res.sendStatus(500);
+  })
+} else {
+  res.sendStatus(403);
+}
+});
+
 /**
  * POST route template
  */

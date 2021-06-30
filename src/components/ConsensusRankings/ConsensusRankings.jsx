@@ -4,7 +4,8 @@ import ConsensusListItem from '../ConsensusListItem/ConsensusListItem';
 import './ConsensusRankings.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
-
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Link from '@material-ui/core/Link';
 
 function ConsensusRankings () {
 
@@ -15,7 +16,7 @@ function ConsensusRankings () {
     
     useEffect(() => {
         dispatch({
-            type: 'FETCH_CR_PLAYERS'
+            type: 'FETCH_CR_PLAYERS',
         });
     }, []);
 
@@ -36,13 +37,25 @@ function ConsensusRankings () {
         }
     })
 
+    const fetchQB = () => {
+        dispatch ({
+            type: 'FETCH_CR_QB'
+        })
+    }
+
     const classes = useStyles();
 
     return ( 
     <div>
         <div className="centerTable">
             <h2>Dynasty: Consensus Ranked Players</h2>
-            {/* <link rel="stylesheet" href="" /> */}
+            <Breadcrumbs className="breadcrumbs">
+            <Link color="inherit" href="">All</Link>
+            <Link color="inherit" href="">QB</Link>
+            <Link color="inherit" href="">RB</Link>
+            <Link color="inherit" href="">WR</Link>
+            <Link color="inherit" href="">TE</Link>
+            </Breadcrumbs>
             <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table>
                 <TableHead>
