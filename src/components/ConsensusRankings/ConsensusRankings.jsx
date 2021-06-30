@@ -14,9 +14,6 @@ function ConsensusRankings () {
     //bring in consensus rankings player list from store
     const players = useSelector(store => store.crPlayerReducer)
     
-    //create a local state to capture what the user clicks on
-    const [position, setPosition] = useState('');
-
     useEffect(() => {
         dispatch({
             type: 'FETCH_CR_PLAYERS',
@@ -95,7 +92,7 @@ function ConsensusRankings () {
             <Link color="inherit" onClick={fetchWr}>WR</Link>
             <Link color="inherit" onClick={fetchTe}>TE</Link>
             </Breadcrumbs>
-            <TableContainer component={Paper} className={classes.tableContainer}>
+            <TableContainer component={Paper} elevation={3} className={classes.tableContainer}>
                 <Table>
                 <TableHead>
                     <TableRow>
