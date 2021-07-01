@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
@@ -13,6 +14,13 @@ function MyRankingsTable () {
 
     //define dispatch
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_MY_PLAYERS',
+            payload: 'all'
+        });
+    }, []);
 
     //define table parameters
     const useStyles = makeStyles({

@@ -21,7 +21,7 @@ function* addPlayer (action) {
     try {
         yield axios.post('/api/my-rankings', action.payload);
         //re-render with the added player
-        yield put({type: 'SET_MY_PLAYERS'});
+        yield put({type: 'FETCH_MY_PLAYERS', payload: 'all'});
     } catch (err) {
         console.log('Error in add player saga', err);
     }
@@ -33,7 +33,7 @@ function* removePlayer (action) {
     try {
         yield axios.delete(`/api/my-rankings/${action.payload.id}`, action.payload)
         //re-render with deleted player
-        yield put({type: 'SET_MY_PLAYERS'});
+        yield put({type: 'FETCH_MY_PLAYERS', payload: 'all'});
     } catch (err) {
         console.log('Error in delete player sage', err);
     }
