@@ -1,26 +1,18 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect, useState} from 'react';
-import ConsensusListItem from '../ConsensusListItem/ConsensusListItem';
-import './MyRankingsTable.css';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
+import MyRankingsItem from '../MyRankingsItem/MyRankingsItem';
+import './MyRankingsTable.css';
 
 function MyRankingsTable () {
 
-    //define dispatch
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch({
-            type: 'FETCH_MY_PLAYERS',
-            payload: 'all'
-        });
-    }, []);
-
     //bring in player data from reducer
     const players = useSelector(store => store.myPlayerReducer)
+
+    //define dispatch
+    const dispatch = useDispatch();
 
     //define table parameters
     const useStyles = makeStyles({
@@ -100,6 +92,7 @@ function MyRankingsTable () {
                     <TableRow>
                         <TableCell className={classes.tableHeaderCell}>Overall Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
                         <TableCell></TableCell>
@@ -107,7 +100,7 @@ function MyRankingsTable () {
                 </TableHead>
                 <TableBody>
                     {players.map ((player, i) => {
-                        return <ConsensusListItem key={i} player={player} />
+                        return <MyRankingsItem key={i} player={player} />
                     })}
                 </TableBody>
                 </Table>

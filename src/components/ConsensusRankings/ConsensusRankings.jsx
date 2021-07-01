@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
-import ConsensusListItem from '../ConsensusListItem/ConsensusListItem';
 import './ConsensusRankings.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
+import ConsensusListItem from '../ConsensusListItem/ConsensusListItem';
 
 function ConsensusRankings () {
 
@@ -98,6 +98,7 @@ function ConsensusRankings () {
                     <TableRow>
                         <TableCell className={classes.tableHeaderCell}>Overall Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
                         <TableCell></TableCell>

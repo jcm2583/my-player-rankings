@@ -118,6 +118,23 @@ router.get('/te', (req, res) => {
   }
 });
 
+//Create a delete route to remove a player from the My Rankings table
+router.delete('/:id', (req, res) => {
+  console.log('req.params is', req.params);
+  console.log('req.user is', req.user);
+
+  //define to the database what to delete
+  const queryText = `DELETE FROM "players" WHERE "id" = $1 AND "user_id" = $2;`;
+
+  //send request to database
+  pool.query(queryText, [req.params.id, req.user.id]).then(result => {
+    res.sendStatus(200);
+  }).catch( err => {
+    console.log('Error in server side DELETE', err);
+    res.sendStatus(500);
+  });
+})
+
 
 
 module.exports = router;

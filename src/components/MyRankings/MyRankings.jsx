@@ -10,6 +10,13 @@ function MyRankings () {
     //declare dispatch
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_MY_PLAYERS',
+            payload: 'all'
+        });
+    }, []);
+
     //will need local states for inputs
     const [overallRank, setOverallRank] = useState('');
     const [positionRank, setPositionRank] = useState('');
