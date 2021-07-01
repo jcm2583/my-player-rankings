@@ -6,9 +6,22 @@ function* addPlayer (action) {
     console.log(action.payload);
     try {
         yield axios.post('/api/my-rankings', action.payload);
-        //will need to add a yield put here to rerender my players
+        //re-render with the added player
+        yield put({type: 'SET_MY_PLAYERS'});
     } catch (err) {
-        console.log('Error in add player function', err);
+        console.log('Error in add player saga', err);
+    }
+}
+
+//create a function to GET players for my players table
+function* getMyPlayers (action) {
+    console.log(action.payload);
+    try {
+        const response = yield axios.get(`/api/my-rankings/${action.payload}`)
+        //send server data to reducer
+        yield put({type: 'SET_MY_PLAYERS', payload: response.data})
+    } catch (err) {
+        console.log("Error in GET player saga", err);
     }
 }
 
@@ -16,6 +29,7 @@ function* addPlayer (action) {
 // create a saga that will
 function* addPlayerSaga () {
     yield takeLatest('ADD_PLAYER', addPlayer);
+    yield takeLatest('FETCH_MY_PLAYERS', getMyPlayers)
 }
 
 export default addPlayerSaga;

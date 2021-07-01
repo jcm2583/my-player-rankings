@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 import ConsensusRankings from '../ConsensusRankings/ConsensusRankings';
 import './MyRankings.css';
+import MyRankingsTable from '../MyRankingsTable/MyRankingsTable';
 
 
 function MyRankings () {
@@ -103,6 +104,9 @@ function MyRankings () {
                 onChange={(evt) => setPlayerUrl(evt.target.value)} />
                 <button type="submit">Add Player</button>
             </form>
+        </div>
+        <div>
+            <MyRankingsTable />
         </div>
         <div>
             <ConsensusRankings />
