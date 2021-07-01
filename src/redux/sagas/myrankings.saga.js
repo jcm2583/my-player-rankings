@@ -63,7 +63,7 @@ function* myRankingsSaga () {
     yield takeLatest('ADD_PLAYER', addPlayer);
     yield takeLatest('REMOVE_PLAYER', removePlayer);
     yield takeLatest('INCREASE_ALL_RANK', changeRank);
-    yield takeLatest('DECREASE_ALL_RANK', changeRank)
+    yield takeLatest('DECREASE_ALL_RANK', changeRank);
 }
 
 export default myRankingsSaga;

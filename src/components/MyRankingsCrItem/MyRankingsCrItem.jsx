@@ -1,7 +1,19 @@
 import {TableCell, TableRow, Typography} from '@material-ui/core';
-import './ConsensusListItem.css'
+import { useDispatch } from 'react-redux';
 
-function ConsensusListItem ({player}) {
+function MyRankingsCrItem ({player}) {
+
+
+    //declare dispatch
+    const dispatch = useDispatch();
+
+    //create a function that will send clicked on player to saga
+    const addMyPlayer = (player) => {
+        dispatch({
+            type: 'ADD_PLAYER',
+            payload: player,
+        });
+    }
 
     return (
         <TableRow>
@@ -13,8 +25,9 @@ function ConsensusListItem ({player}) {
             <TableCell>{player?.position}</TableCell>
             <TableCell>{player?.team}</TableCell>
             <TableCell>{player?.position_rank}</TableCell>
+            <TableCell><button onClick={() => addMyPlayer(player)}>Add to My Rankings</button></TableCell>
         </TableRow>
     )
 }
 
-export default ConsensusListItem;
+export default MyRankingsCrItem;

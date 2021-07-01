@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
-import ConsensusRankings from '../ConsensusRankings/ConsensusRankings';
+import MyRankingsCrTable from '../MyRankingsCrTable/MyRankingsCrTable';
 import './MyRankings.css';
 import MyRankingsTable from '../MyRankingsTable/MyRankingsTable';
 
@@ -109,7 +109,7 @@ function MyRankings () {
             <MyRankingsTable />
         </div>
         <div>
-            <ConsensusRankings />
+            <MyRankingsCrTable />
         </div>
     </div>
     )
