@@ -39,12 +39,31 @@ function* removePlayer (action) {
     }
 }
 
-
-// create a saga that will
-function* addPlayerSaga () {
-    yield takeLatest('ADD_PLAYER', addPlayer);
-    yield takeLatest('FETCH_MY_PLAYERS', fetchMyPlayers);
-    yield takeLatest('REMOVE_PLAYER', removePlayer)
+//create a function that will increase the player rank
+function* changeRank (action) {
+    console.log(action.payload);
+    try {
+        yield axios.put(`/api/my-rankings/${action.payload.player.id}`, action.payload)
+        //re-render my player list
+        yield put({type: 'FETCH_MY_PLAYERS', payload: 'all'})
+    } catch (err) {
+        console.log('Error in increase rank saga', err);
+    };
 }
 
-export default addPlayerSaga;
+//create a function that will decrease the player rank
+function* decreaseAllRank (action) {
+    console.log(action.payload);
+}
+
+
+// create a saga that will
+function* myRankingsSaga () {
+    yield takeLatest('FETCH_MY_PLAYERS', fetchMyPlayers);
+    yield takeLatest('ADD_PLAYER', addPlayer);
+    yield takeLatest('REMOVE_PLAYER', removePlayer);
+    yield takeLatest('INCREASE_ALL_RANK', changeRank);
+    yield takeLatest('DECREASE_ALL_RANK', changeRank)
+}
+
+export default myRankingsSaga;

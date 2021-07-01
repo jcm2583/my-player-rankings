@@ -118,6 +118,34 @@ router.get('/te', (req, res) => {
   }
 });
 
+//create a put route to increase the player rank
+router.put('/:id', (req, res) => {
+  console.log('req.params is', req.params);
+  console.log('req.user is', req.user);
+  console.log('req.body is', req.body);
+
+  //declare queryText but leave it blank to be set after conditional of which button was clicked on
+  let queryText = ''
+
+  if (req.body.direction === 'down') {
+    queryText = `UPDATE "players" SET "overall_rank" = overall_rank - 1 WHERE "id" = $1 AND "user_id" = $2;`;
+  } 
+  else if (req.body.direction === 'up') {
+    queryText = `UPDATE "players" SET "overall_rank" = overall_rank + 1 WHERE "id" = $1 AND "user_id" = $2;`;
+  }
+
+  //send request to database
+  pool.query(queryText, [req.params.id, req.user.id]).then(result => {
+    res.sendStatus(200);
+  }).catch(err => {
+    console.log('Error in server side put', err);
+    res.sendStatus(500);
+  })
+})
+
+
+
+
 //Create a delete route to remove a player from the My Rankings table
 router.delete('/:id', (req, res) => {
   console.log('req.params is', req.params);

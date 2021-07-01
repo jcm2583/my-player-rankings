@@ -103,6 +103,8 @@ function MyRankingsTable () {
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
+                        <TableCell>Increase Rank</TableCell>
+                        <TableCell>Decrease Rank</TableCell>
                         <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
