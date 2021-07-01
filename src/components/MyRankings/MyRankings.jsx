@@ -10,14 +10,14 @@ function MyRankings () {
     const dispatch = useDispatch();
 
     //will need local states for inputs
-    const [overallRank, setOverallRank] = useState();
-    const [positionRank, setPositionRank] = useState();
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [number, setNumber] = useState();
-    const [position, setPosition] = useState();
-    const [team, setTeam] = useState();
-    const [playerUrl, setPlayerUrl] = useState();
+    const [overallRank, setOverallRank] = useState('');
+    const [positionRank, setPositionRank] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [number, setNumber] = useState('');
+    const [position, setPosition] = useState('');
+    const [team, setTeam] = useState('');
+    const [playerUrl, setPlayerUrl] = useState('');
 
     //create a function that will submit the player to the database
     const handleSubmit = (evt) => {
@@ -90,9 +90,16 @@ function MyRankings () {
                     <option value="WR">WR</option>
                     <option value="TE">TE</option>
                 </select>
-                <input type="text" placeholder="Team"
+                <input 
+                type="text" 
+                placeholder="Team"
+                value={team}
                 onChange={(evt) => setTeam(evt.target.value)} />
-                <input type="text" placeholder="Player Page URL"
+
+                <input 
+                type="text" 
+                placeholder="Player Page URL"
+                value={playerUrl}
                 onChange={(evt) => setPlayerUrl(evt.target.value)} />
                 <button type="submit">Add Player</button>
             </form>

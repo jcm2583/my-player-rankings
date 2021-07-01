@@ -6,7 +6,7 @@ function* addPlayer (action) {
     console.log(action.payload);
     try {
         yield axios.post('/api/my-rankings', action.payload);
-        console.log("Add player response", response);
+        //will need to add a yield put here to rerender my players
     } catch (err) {
         console.log('Error in add player function', err);
     }
