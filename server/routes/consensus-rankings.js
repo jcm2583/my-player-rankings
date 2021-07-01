@@ -6,8 +6,6 @@ const router = express.Router();
 
 //All players
 router.get('/all', (req, res) => {
-  // GET route code here
-  console.log('in get c-r rankings get router');
   if(req.isAuthenticated()) {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
@@ -27,8 +25,6 @@ router.get('/all', (req, res) => {
 
 //Quarterbacks only
 router.get('/qb', (req, res) => {
-  // GET route code here
-  console.log('in qb rankings get router');
   if(req.isAuthenticated()) {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
@@ -48,8 +44,6 @@ router.get('/qb', (req, res) => {
 
 //Running backs only
 router.get('/rb', (req, res) => {
-  // GET route code here
-  console.log('in rb rankings get router');
   if(req.isAuthenticated()) {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
@@ -69,8 +63,6 @@ router.get('/rb', (req, res) => {
 
 //Wide receivers only
 router.get('/wr', (req, res) => {
-  // GET route code here
-  console.log('in qb rankings get router');
   if(req.isAuthenticated()) {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
@@ -90,8 +82,6 @@ router.get('/wr', (req, res) => {
 
 //Tight ends only
 router.get('/te', (req, res) => {
-  // GET route code here
-  console.log('in qb rankings get router');
   if(req.isAuthenticated()) {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"

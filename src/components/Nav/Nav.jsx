@@ -35,6 +35,12 @@ function Nav() {
             <Link className="navLink" to="/consensus-rankings">
               Consensus Rankings
             </Link>
+            <Link className="navLink" to="/my-rankings">
+              My Rankings
+            </Link>
+            <Link className="navLink" to="/my-watchlist"
+            >My Watchlist
+            </Link>
             <LogOutButton className="navLink" />
           </>
         )}

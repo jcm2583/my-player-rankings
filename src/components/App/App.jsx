@@ -22,6 +22,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 import ConsensusRankings from '../ConsensusRankings/ConsensusRankings';
+import MyRankings from '../MyRankings/MyRankings';
+import MyWatchlist from '../MyWatchlist/MyWatchlist';
 
 function App() {
   const dispatch = useDispatch();
@@ -108,6 +110,20 @@ function App() {
             path="/consensus-rankings"
           >
             <ConsensusRankings />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path='/my-rankings'
+            >
+            <MyRankings />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path='/my-watchlist'
+            >
+            <MyWatchlist />
           </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

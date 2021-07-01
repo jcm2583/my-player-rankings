@@ -1,13 +1,13 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
-import './ConsensusRankings.css';
+import './MyRankingsCrTable.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
-import ConsensusListItem from '../ConsensusListItem/ConsensusListItem';
+import MyRankingsCrItem from '../MyRankingsCrItem/MyRankingsCrItem';
 
-function ConsensusRankings () {
+function MyRankingsCrTable () {
 
     //declare dispatch
     const dispatch = useDispatch();
@@ -101,11 +101,12 @@ function ConsensusRankings () {
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
+                        <TableCell className={classes.tableHeaderCell}></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {players.map ((player, i) => {
-                        return <ConsensusListItem key={i} player={player} />
+                        return <MyRankingsCrItem key={i} player={player} />
                     })}
                 </TableBody>
                 </Table>
@@ -115,4 +116,4 @@ function ConsensusRankings () {
     )
 }
 
-export default ConsensusRankings;
+export default MyRankingsCrTable;

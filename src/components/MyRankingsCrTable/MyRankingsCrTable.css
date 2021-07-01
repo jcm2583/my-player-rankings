@@ -1,0 +1,20 @@
+.breadcrumbs {
+    display: flex;
+    justify-content: center;
+}
+
+.centerTable {
+    text-align: center;
+}
+
+.playerLink {
+    text-decoration: none;
+}
+
+.playerLink:hover {
+    color: navy;
+}
+
+.playerLink:visited {
+    color: blue;
+}

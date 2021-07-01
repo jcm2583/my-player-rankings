@@ -1,22 +1,23 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect, useState} from 'react';
-import './ConsensusRankings.css';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
-import ConsensusListItem from '../ConsensusListItem/ConsensusListItem';
+import MyRankingsItem from '../MyRankingsItem/MyRankingsItem';
+import './MyRankingsTable.css';
 
-function ConsensusRankings () {
+function MyRankingsTable () {
 
-    //declare dispatch
+    //bring in player data from reducer
+    const players = useSelector(store => store.myPlayerReducer)
+
+    //define dispatch
     const dispatch = useDispatch();
-    //bring in consensus rankings player list from store
-    const players = useSelector(store => store.crPlayerReducer)
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_CR_PLAYERS',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'all'
         });
     }, []);
@@ -43,7 +44,7 @@ function ConsensusRankings () {
     const fetchAll = () => {
         //dispatch to collect data on all players
         dispatch({
-            type: 'FETCH_CR_PLAYERS',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'all'
         })
     }
@@ -51,7 +52,7 @@ function ConsensusRankings () {
     const fetchQb = () => {
         //dispatch to collect qb data
         dispatch({
-            type: 'FETCH_CR_PLAYERS',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'qb'
         })
     }
@@ -59,7 +60,7 @@ function ConsensusRankings () {
     const fetchRb = () => {
         //dispatch to collect rb data
         dispatch({
-            type: 'FETCH_CR_PLAYERS',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'rb'
         })
     }
@@ -67,7 +68,7 @@ function ConsensusRankings () {
     const fetchWr = () => {
         //dispatch to collect wr data
         dispatch({
-            type: 'FETCH_CR_PLAYERS',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'wr'
         })
     }
@@ -75,16 +76,17 @@ function ConsensusRankings () {
     const fetchTe = () => {
         //dispatch to collect te data
         dispatch({
-            type: 'FETCH_CR_PLAYERS',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'te'
         })
     }
-    
 
-    return ( 
+
+    return (
     <div>
+            
         <div className="centerTable">
-            <h2>Dynasty: Consensus Ranked Players</h2>
+            <h2>My Player Rankings</h2>
             <Breadcrumbs className="breadcrumbs">
             <Link color="inherit" onClick={fetchAll}>All</Link>
             <Link color="inherit" onClick={fetchQb}>QB</Link>
@@ -101,18 +103,22 @@ function ConsensusRankings () {
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
+                        <TableCell>Increase Rank</TableCell>
+                        <TableCell>Decrease Rank</TableCell>
+                        <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {players.map ((player, i) => {
-                        return <ConsensusListItem key={i} player={player} />
+                        return <MyRankingsItem key={i} player={player} />
                     })}
                 </TableBody>
                 </Table>
             </TableContainer>
         </div>
+    
     </div>
     )
 }
 
-export default ConsensusRankings;
+export default MyRankingsTable;
