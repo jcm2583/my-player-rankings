@@ -24,6 +24,7 @@ import './App.css';
 import ConsensusRankings from '../ConsensusRankings/ConsensusRankings';
 import MyRankings from '../MyRankings/MyRankings';
 import MyWatchlist from '../MyWatchlist/MyWatchlist';
+import Homepage from '../Homepage/Homepage';
 
 function App() {
   const dispatch = useDispatch();
@@ -124,6 +125,13 @@ function App() {
             path='/my-watchlist'
             >
             <MyWatchlist />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path='/homepage'
+            >
+              <Homepage />
           </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
