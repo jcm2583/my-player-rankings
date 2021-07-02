@@ -15,12 +15,54 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
     //use pool to send the request to the database
     pool
-    .query(queryText, [player.firstName, player.lastName, player.position, player.team, player.notes, player.image, req.user.id])
+    .query(queryText, [player.first_name, player.last_name, player.position, player.team, player.notes, player.image_url, req.user.id])
     .then( result => {
         res.sendStatus(201);
     })
     .catch( err => {
         console.log('There was an error in mw server side post', err);
+        res.sendStatus(500);
+    });
+})
+
+//need to create a get route to retrieve my watchlist players from database
+router.get('/', (req, res) => {
+    if(req.isAuthenticated()) {
+    //define query to send to database
+    const queryText = `SELECT * FROM "watchlist" WHERE "user_id" = $1
+    ORDER BY "last_name" ASC;`;
+        
+    //use pool to send request to database
+    pool
+    .query(queryText, [req.user.id])
+    .then( result => {
+        res.send(result.rows);
+    })
+    .catch( err => {
+        console.log('There was an error in mw server side get', err);
+        res.sendStatus(500);
+    })
+    } else {
+        res.sendStatus(403);
+    };
+})
+
+//need to create a delete route to remove player from server
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('req.params is', req.params);
+    console.log('req.user is', req.user);
+    
+    //define query text of what to delete
+    const queryText = `DELETE FROM "watchlist" WHERE "id" = $1 AND "user_id" = $2;`
+
+    //use pool to send the data to the database
+    pool
+    .query(queryText, [req.params.id, req.user.id])
+    .then( result => {
+        res.sendStatus(200);
+    })
+    .catch(err => {
+        console.log('There was an error in mw server side delete', err);
         res.sendStatus(500);
     });
 })

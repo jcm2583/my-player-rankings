@@ -1,11 +1,20 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import MyWatchlistItem from '../MyWatchlistItem/MyWatchlistItem';
 
 function MyWatchlist () {
 
-    
     //declare dispatch
     const dispatch = useDispatch();
+
+    //bring in players from my watchlist reducer
+    const players = useSelector(store => store.myWatchlistReducer);
+    
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_WATCHLIST',
+        });
+    }, []);
 
     //declare local states
     const [firstName, setFirstName] = useState('');
@@ -21,12 +30,12 @@ function MyWatchlist () {
         
         //create object to send
         let playerObject = {
-            firstName: firstName,
-            lastName: lastName,
+            first_name: firstName,
+            last_name: lastName,
             position: position,
             team: team,
             notes: notes,
-            image: image
+            image_url: image
         }
 
         dispatch({
@@ -44,6 +53,8 @@ function MyWatchlist () {
     }
     
     return (
+        
+    <div>   
         <div>
             <form onSubmit={handleSubmit}>
                 <input 
@@ -83,12 +94,19 @@ function MyWatchlist () {
                 placeholder="Image URL" 
                 value={image}
                 onChange={(evt) => setImage(evt.target.value)}/>
-                
+
                 <button type="submit">Add Player</button>
             </form>
         </div>
-    )
 
+        <div>
+            {players.map ((player, i) => {
+                return <MyWatchlistItem key={i} player={player}/>
+            })}
+        </div>
+
+    </div>
+    )
 }
 
 export default MyWatchlist;
