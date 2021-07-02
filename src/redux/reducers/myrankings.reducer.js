@@ -1,4 +1,3 @@
-
 //create a reducer to store my player data
 const myPlayerReducer = (state = [], action) => {
     switch (action.type) {

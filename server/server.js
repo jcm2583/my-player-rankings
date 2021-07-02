@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const consensusRankings = require('./routes/consensus-rankings');
 const myRankings = require('./routes/my-rankings');
+const myWatchlist = require('./routes/my-watchlist');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/consensus-rankings', consensusRankings)
 app.use('/api/my-rankings', myRankings)
+app.use('/api/my-watchlist', myWatchlist)
 // Serve static files
 app.use(express.static('build'));
 
