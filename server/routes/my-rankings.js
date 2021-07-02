@@ -12,12 +12,14 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     const queryText = `INSERT INTO "players" ("overall_rank", "position_rank", "first_name", 
     "last_name", "number", "position", "team", "stats_url", "user_id")
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
-    //use pool.query to post info to database under specific user
-    pool.query(queryText, [player.overall_rank, player.position_rank, player.first_name, 
+    //use pool to post info to database under specific user
+    pool
+    .query(queryText, [player.overall_rank, player.position_rank, player.first_name, 
     player.last_name, player.number, player.position, player.team, player.stats_url, req.user.id])
     .then( result => {
         res.sendStatus(201);
-    }).catch (err => {
+    })
+    .catch (err => {
         console.log('There was an error in server side POST', err);
         res.sendStatus(500);
     });
@@ -31,9 +33,12 @@ router.get('/all', (req, res) => {
     WHERE "user_id" = $1
     ORDER BY "overall_rank" ASC;`
     // use pool to retrieve the data
-    pool.query(queryText, [req.user.id]).then(result => {
+    pool
+    .query(queryText, [req.user.id])
+    .then(result => {
         res.send(result.rows);
-    }).catch( err => {
+    })
+    .catch( err => {
         console.log("Error in server side GET:", err);
         res.sendStatus(500);
     })
@@ -50,9 +55,12 @@ router.get('/qb', (req, res) => {
     WHERE "user_id" = $1 AND "position" = 'QB'
     ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
     // use pool to retrieve the data
-    pool.query(queryText, [req.user.id]).then(result => {
+    pool
+    .query(queryText, [req.user.id])
+    .then(result => {
       res.send(result.rows);
-    }).catch( err => {
+    })
+    .catch( err => {
       console.log("Error in server side GET:", err);
       res.sendStatus(500);
     })
@@ -69,9 +77,12 @@ router.get('/rb', (req, res) => {
     WHERE "user_id" = $1 AND "position" = 'RB'
     ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
     // use pool to retrieve the data
-    pool.query(queryText, [req.user.id]).then(result => {
+    pool
+    .query(queryText, [req.user.id])
+    .then(result => {
       res.send(result.rows);
-    }).catch( err => {
+    })
+    .catch( err => {
       console.log("Error in server side GET:", err);
       res.sendStatus(500);
     })
@@ -88,9 +99,12 @@ router.get('/wr', (req, res) => {
     WHERE "user_id" = $1 AND "position" = 'WR'
     ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
     // use pool to retrieve the data
-    pool.query(queryText, [req.user.id]).then(result => {
+    pool
+    .query(queryText, [req.user.id])
+    .then(result => {
       res.send(result.rows);
-    }).catch( err => {
+    })
+    .catch( err => {
       console.log("Error in server side GET:", err);
       res.sendStatus(500);
     })
@@ -107,9 +121,12 @@ router.get('/te', (req, res) => {
     WHERE "user_id" = $1 AND "position" = 'TE'
     ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
     // use pool to retrieve the data
-    pool.query(queryText, [req.user.id]).then(result => {
+    pool
+    .query(queryText, [req.user.id])
+    .then(result => {
       res.send(result.rows);
-    }).catch( err => {
+    })
+    .catch( err => {
       console.log("Error in server side GET:", err);
       res.sendStatus(500);
     })
@@ -135,9 +152,12 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
   }
 
   //send request to database
-  pool.query(queryText, [req.params.id, req.user.id]).then(result => {
+  pool
+  .query(queryText, [req.params.id, req.user.id])
+  .then(result => {
     res.sendStatus(200);
-  }).catch(err => {
+  })
+  .catch(err => {
     console.log('Error in server side put', err);
     res.sendStatus(500);
   })
