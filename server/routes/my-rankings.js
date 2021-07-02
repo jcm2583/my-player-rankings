@@ -119,7 +119,7 @@ router.get('/te', (req, res) => {
 });
 
 //create a put route to increase the player rank
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
   console.log('req.params is', req.params);
   console.log('req.user is', req.user);
   console.log('req.body is', req.body);
@@ -147,7 +147,7 @@ router.put('/:id', (req, res) => {
 
 
 //Create a delete route to remove a player from the My Rankings table
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
   console.log('req.params is', req.params);
   console.log('req.user is', req.user);
 
