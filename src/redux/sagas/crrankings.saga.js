@@ -8,17 +8,12 @@ function* fetchCrPlayers (action) {
         const response = yield axios.get(`/api/consensus-rankings/${action.payload}`)
         console.log(response.data);
         //send the data to a reducer
-        yield put({
-            type: 'SET_CR_PLAYERS',
-            payload: response.data
-        })
+        yield put({type: 'SET_CR_PLAYERS', payload: response.data})
     }
     catch (err) {
         console.log('fetchCrPlayers has an error', err);
     }
 }
-
-
 
 //create a saga listener to fetch players from ConsensusRankings.jsx page
 function* crPlayerSaga () {

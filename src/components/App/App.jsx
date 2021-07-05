@@ -24,6 +24,7 @@ import './App.css';
 import ConsensusRankings from '../ConsensusRankings/ConsensusRankings';
 import MyRankings from '../MyRankings/MyRankings';
 import MyWatchlist from '../MyWatchlist/MyWatchlist';
+import Homepage from '../Homepage/Homepage';
 
 function App() {
   const dispatch = useDispatch();
@@ -53,54 +54,46 @@ function App() {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
             path="/user"
           >
             <UserPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/homepage"
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/user"
+            authRedirect="/homepage"
           >
             <LoginPage />
           </ProtectedRoute>
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/home"
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
-            authRedirect="/user"
+            authRedirect="/home"
           >
             <RegisterPage />
           </ProtectedRoute>
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/homepage"
             // - else shows LandingPage at "/home"
             exact
             path="/home"
-            authRedirect="/user"
+            authRedirect="/homepage"
           >
             <LandingPage />
           </ProtectedRoute>
@@ -124,6 +117,13 @@ function App() {
             path='/my-watchlist'
             >
             <MyWatchlist />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path='/homepage'
+            >
+              <Homepage />
           </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

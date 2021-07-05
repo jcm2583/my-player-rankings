@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const consensusRankings = require('./routes/consensus-rankings');
 const myRankings = require('./routes/my-rankings');
 const myWatchlist = require('./routes/my-watchlist');
+const homepage = require('./routes/homepage')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/api/user', userRouter);
 app.use('/api/consensus-rankings', consensusRankings)
 app.use('/api/my-rankings', myRankings)
 app.use('/api/my-watchlist', myWatchlist)
+app.use('/api/homepage', homepage);
 // Serve static files
 app.use(express.static('build'));
 

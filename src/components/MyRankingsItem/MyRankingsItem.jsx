@@ -1,5 +1,6 @@
 import { TableCell, TableRow, Typography } from '@material-ui/core';
-import { useDispatch } from 'react-redux'; 
+import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 
 function MyRankingsItem({ player }) {
 
@@ -9,11 +10,28 @@ function MyRankingsItem({ player }) {
 
     //create a function that will send a delete player request to the saga
     const removePlayer = (player) => {
-        console.log(player);
-        dispatch({
-            type: 'REMOVE_PLAYER',
-            payload: player
-        })
+        //alert user to confirm that they want to delete selected player
+        Swal.fire({
+            title: 'Remove Player',
+            text: "Are you sure you want to remove player?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, remove player!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch({
+                    type: 'REMOVE_PLAYER',
+                    payload: player
+                });
+              Swal.fire(
+                'Removed!',
+                'The selected player has been removed.',
+                'success'
+              )
+            }
+          });
     }
 
     //create a function that will send an increase player rank request to the saga

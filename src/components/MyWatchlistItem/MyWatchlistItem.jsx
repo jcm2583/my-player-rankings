@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 
 function MyWatchlistItem ({player}) {
 
@@ -7,10 +8,28 @@ function MyWatchlistItem ({player}) {
 
     //create a function that removes selected player
     const removePlayer = (player) => {
-        dispatch({
-            type: 'REMOVE_WL_PLAYER',
-            payload: player 
-        });
+        //alert user to confirm removal of player
+        Swal.fire({
+            title: 'Remove Player',
+            text: "Are you sure you want to remove player?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, remove player!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch({
+                    type: 'REMOVE_WL_PLAYER',
+                    payload: player 
+                });
+              Swal.fire(
+                'Removed!',
+                'The selected player has been removed.',
+                'success'
+              )
+            }
+          });
     }
 
     return (
