@@ -71,7 +71,7 @@ function MyWatchlistItem ({player}) {
               image={player.image_url} />
             <CardContent className={classes.text}>
             <Typography>{player.position}, {player.team}</Typography>
-            <Typography>{player.notes}</Typography>
+            <Typography>Notes: {player.notes}</Typography>
             <Button
             variant="contained"
             color="secondary"
