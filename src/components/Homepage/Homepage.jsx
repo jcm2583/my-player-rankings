@@ -4,10 +4,14 @@ import { Card, CardHeader, CardContent, CardMedia, Typography, Grid } from '@mat
 import { makeStyles } from '@material-ui/core/styles';
 import './Homepage.css';
 
-function Homepage () {
-    
+function Homepage() {
+
     //define dispatch
     const dispatch = useDispatch();
+
+    //bring in username for welcoming
+    const user = useSelector(store => store.user);
+
     //bring in homepage data from reducer
     const players = useSelector(store => store.homepageReducer);
 
@@ -19,11 +23,12 @@ function Homepage () {
 
     const useStyles = makeStyles({
         root: {
-          minWidth: 250,
+            minWidth: 250,
         },
         gridContainer: {
             paddingLeft: "80px",
-            paddingRight: "80px"
+            paddingRight: "80px",
+            flexWrap: "wrap",
         },
         image: {
             height: 0,
@@ -36,38 +41,38 @@ function Homepage () {
             textAlign: "center",
         }
 
-      });
+    });
 
-      const classes = useStyles();
+    const classes = useStyles();
 
-    
+
     return (
         <div>
-            <h2 className="pageHeader">Top fantasy finishers in 2020 by position (PPR)</h2>
-                <Grid container spacing={6} className={classes.gridContainer} justify="center">
-                {players.map ((player, i) => {
+            <h2>Welcome, {user.username}!</h2>
+            <h3 className="centerText">Below you can view some of the top fantasy performers of the 2020 season or click on any of the links above</h3>
+            <h2 className="pageHeader">Top 5 fantasy finishers in 2020 by position (PPR)</h2>
+            <Grid container spacing={4} className={classes.gridContainer}>
+                {players.map((player, i) => {
                     return (
-                        
-                        <Grid item lg={2} med={4} sm={6} key={i}>
-                        <Card className={classes.root}>
-                            <CardHeader 
-                            className={classes.title} 
-                            title={player.first_name + " " + player.last_name}/>
-                            <CardMedia 
-                            className={classes.image} 
-                            image={player.image_url} />
-                            <CardContent className={classes.text}>
-                            <Typography>{player.finish}</Typography>
-                            <Typography>{player.total_points} pts</Typography>
-                            </CardContent>
-                        </Card>
+                        <Grid item lg={3} med={4} sm={6} key={i}>
+                            <Card className={classes.root}>
+                                <CardHeader
+                                    className={classes.title}
+                                    title={player.first_name + " " + player.last_name} />
+                                <CardMedia
+                                    className={classes.image}
+                                    image={player.image_url} />
+                                <CardContent className={classes.text}>
+                                    <Typography>{player.finish}</Typography>
+                                    <Typography>{player.total_points} pts</Typography>
+                                </CardContent>
+                            </Card>
                         </Grid>
-                
                     )
                 })}
-                </Grid>
+            </Grid>
         </div>
     )
 }
 
-export default Homepage; 
+export default Homepage;
