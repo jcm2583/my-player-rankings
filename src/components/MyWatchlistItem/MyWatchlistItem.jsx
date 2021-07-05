@@ -1,4 +1,8 @@
 import { useDispatch } from 'react-redux';
+import { Card, CardHeader, CardContent, CardMedia, Typography, Grid, } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Swal from 'sweetalert2';
 
 function MyWatchlistItem ({player}) {
@@ -32,14 +36,50 @@ function MyWatchlistItem ({player}) {
           });
     }
 
+    const useStyles = makeStyles({
+      root: {
+          minWidth: 250,
+      },
+      gridContainer: {
+          paddingLeft: "80px",
+          paddingRight: "80px",
+          flexWrap: "wrap",
+      },
+      image: {
+          height: 0,
+          paddingTop: "100%"
+      },
+      text: {
+          textAlign: "center",
+      },
+      title: {
+          textAlign: "center",
+      }
+
+  });
+
+  const classes = useStyles();
+
     return (
-        <div>
-            <h3>{player.first_name} {player.last_name}</h3>
-            <h4>{player.position}, {player.team}</h4>
-            <img src={player.image_url} alt={player.first_name} />
-            <p>{player.notes}</p>
-            <button onClick={() => removePlayer(player)}>Remove Player</button>
-        </div>
+        <Grid item lg={3} med={4} sm={6}>
+            <Card className={classes.root}>
+            <CardHeader
+              className={classes.title}
+              title={player.first_name + " " + player.last_name} />
+            <CardMedia
+              className={classes.image}
+              image={player.image_url} />
+            <CardContent className={classes.text}>
+            <Typography>{player.position}, {player.team}</Typography>
+            <Typography>{player.notes}</Typography>
+            <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<DeleteIcon />}
+            onClick={() => removePlayer(player)}>Remove Player</Button>
+            </CardContent>
+            </Card>
+        </Grid>
     )
 }
 
