@@ -24,7 +24,7 @@ function MyRankingsItem({ player }) {
                 dispatch({
                     type: 'REMOVE_PLAYER',
                     payload: player
-                })
+                });
               Swal.fire(
                 'Removed!',
                 'The selected player has been removed.',

@@ -1,5 +1,6 @@
 import {TableCell, TableRow, Typography} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 
 function MyRankingsCrItem ({player}) {
 
@@ -13,6 +14,8 @@ function MyRankingsCrItem ({player}) {
             type: 'ADD_PLAYER',
             payload: player,
         });
+        //alert user that they player has been added
+        Swal.fire('Player added!')
     }
 
     return (
