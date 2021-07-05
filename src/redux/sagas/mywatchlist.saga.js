@@ -39,7 +39,6 @@ function* removeWatchlistPlayer (action) {
     }
 }
 
-
 function* myWatchlistSaga () {
     yield takeLatest('ADD_TO_WATCHLIST', addToWatchlist);
     yield takeLatest('FETCH_WATCHLIST', fetchWatchlist);
