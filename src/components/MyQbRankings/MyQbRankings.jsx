@@ -5,25 +5,70 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
-import MyRankingsItem from '../MyRankingsItem/MyRankingsItem';
-import './MyRankingsTable.css';
+import MyQbItem from '../MyQbItem/MyQbItem';
+import MyRankingsCrTable from '../MyRankingsCrTable/MyRankingsCrTable';
 
-function MyRankingsTable () {
+function MyQbRankings () {
 
+    //declare dispatch
+    const dispatch = useDispatch();
     //declare history
     const history = useHistory();
-    //bring in player data from reducer
-    const players = useSelector(store => store.myPlayerReducer)
-
-    //define dispatch
-    const dispatch = useDispatch();
+    
+    //bring in quarterbacks from reducer
+    const players = useSelector(store => store.myPlayerReducer);
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
-            payload: 'all'
+            type: 'FETCH__MY_QB',
+            payload: 'qb'
         });
     }, []);
+
+    const fetchAll = () => {
+        //dispatch to collect data on all players
+        dispatch({
+            type: 'FETCH_ALL_MY_PLAYERS',
+            payload: 'all'
+        })
+        history.push('/my-rankings')
+    }
+
+    const fetchQb = () => {
+        //dispatch to collect qb data
+        dispatch({
+            type: 'FETCH_MY_QB',
+            payload: 'qb'
+        })
+        history.push('/my-rankings/qb')
+    }
+
+    const fetchRb = () => {
+        //dispatch to collect rb data
+        dispatch({
+            type: 'FETCH_ALL_MY_PLAYERS',
+            payload: 'rb'
+        })
+        history.push('/my-rankings')
+    }
+
+    const fetchWr = () => {
+        //dispatch to collect wr data
+        dispatch({
+            type: 'FETCH_ALL_MY_PLAYERS',
+            payload: 'wr'
+        })
+        history.push('/my-rankings')
+    }
+
+    const fetchTe = () => {
+        //dispatch to collect te data
+        dispatch({
+            type: 'FETCH_ALL_MY_PLAYERS',
+            payload: 'te'
+        })
+        history.push('/my-rankings')
+    }
 
     //define table parameters
     const useStyles = makeStyles({
@@ -44,50 +89,8 @@ function MyRankingsTable () {
 
     const classes = useStyles();
 
-    const fetchAll = () => {
-        //dispatch to collect data on all players
-        dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
-            payload: 'all'
-        })
-    }
-
-    const fetchQb = () => {
-        //dispatch to collect qb data
-        dispatch({
-            type: 'FETCH_MY_QB',
-            payload: 'qb'
-        })
-        history.push('/my-rankings/qb')
-    }
-
-    const fetchRb = () => {
-        //dispatch to collect rb data
-        dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
-            payload: 'rb'
-        })
-    }
-
-    const fetchWr = () => {
-        //dispatch to collect wr data
-        dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
-            payload: 'wr'
-        })
-    }
-
-    const fetchTe = () => {
-        //dispatch to collect te data
-        dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
-            payload: 'te'
-        })
-    }
-
-
     return (
-    <div>
+        <div>
             
         <div className="centerTable">
             <h2>My Player Rankings</h2>
@@ -114,15 +117,17 @@ function MyRankingsTable () {
                 </TableHead>
                 <TableBody>
                     {players.map ((player, i) => {
-                        return <MyRankingsItem key={i} player={player} />
+                        return <MyQbItem key={i} player={player} />
                     })}
                 </TableBody>
                 </Table>
             </TableContainer>
         </div>
-    
+        <div>
+            <MyRankingsCrTable /> 
+        </div>
     </div>
     )
 }
 
-export default MyRankingsTable;
+export default MyQbRankings; 

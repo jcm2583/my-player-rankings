@@ -10,7 +10,7 @@ router.get('/all', (req, res) => {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
   WHERE "user_id" is NULL
-  ORDER BY "overall_rank" ASC;`
+  ORDER BY "overall_rank" ASC;`;
   // use pool to retrieve the data
   pool.query(queryText).then(result => {
     res.send(result.rows);
@@ -29,7 +29,7 @@ router.get('/qb', (req, res) => {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
   WHERE "user_id" is NULL AND "position" = 'QB'
-  ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
+  ORDER BY "position_rank" ASC;`;
   // use pool to retrieve the data
   pool.query(queryText).then(result => {
     res.send(result.rows);
@@ -48,7 +48,7 @@ router.get('/rb', (req, res) => {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
   WHERE "user_id" is NULL AND "position" = 'RB'
-  ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
+  ORDER BY "position_rank" ASC;`;
   // use pool to retrieve the data
   pool.query(queryText).then(result => {
     res.send(result.rows);
@@ -67,7 +67,7 @@ router.get('/wr', (req, res) => {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
   WHERE "user_id" is NULL AND "position" = 'WR'
-  ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
+  ORDER BY "position_rank" ASC;`;
   // use pool to retrieve the data
   pool.query(queryText).then(result => {
     res.send(result.rows);
@@ -86,7 +86,7 @@ router.get('/te', (req, res) => {
   // Define query text to get from server
   const queryText = `SELECT * FROM "players"
   WHERE "user_id" is NULL AND "position" = 'TE'
-  ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
+  ORDER BY "position_rank" ASC;`
   // use pool to retrieve the data
   pool.query(queryText).then(result => {
     res.send(result.rows);

@@ -1,5 +1,8 @@
 import { TableCell, TableRow, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 
 function MyRankingsItem({ player }) {
@@ -61,9 +64,9 @@ function MyRankingsItem({ player }) {
             >{player?.first_name} {player?.last_name}</a><Typography>#{player?.number}</Typography></TableCell>
             <TableCell>{player?.position}</TableCell>
             <TableCell>{player?.team}</TableCell>
-            <TableCell>{player?.position_rank}</TableCell>
-            <TableCell><button onClick={() => increaseRank(player)}>up</button></TableCell>
-            <TableCell><button onClick={() => decreaseRank(player)}>down</button></TableCell>
+            <TableCell>{player?.position}{player?.position_rank}</TableCell>
+            <TableCell><Button startIcon={<KeyboardArrowUpIcon />} onClick={() => increaseRank(player)}></Button></TableCell>
+            <TableCell><Button startIcon={<KeyboardArrowDownIcon />}onClick={() => decreaseRank(player)}></Button></TableCell>
             <TableCell><button onClick={() => removePlayer(player)}>REMOVE</button></TableCell>
         </TableRow>
     )

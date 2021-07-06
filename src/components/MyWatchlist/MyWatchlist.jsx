@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { Grid, MenuItem, Select, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import MyWatchlistItem from '../MyWatchlistItem/MyWatchlistItem';
 
 function MyWatchlist () {
@@ -51,59 +54,97 @@ function MyWatchlist () {
         setNotes('');
         setImage('');
     }
+
+    const useStyles = makeStyles({
+        root: {
+            minWidth: 250,
+        },
+        gridContainer: {
+            paddingLeft: "80px",
+            paddingRight: "80px",
+            flexWrap: "wrap",
+        },
+        image: {
+            height: 0,
+            paddingTop: "100%"
+        },
+        text: {
+            textAlign: "center",
+        },
+        title: {
+            textAlign: "center",
+        }
+
+    });
+
+    const classes = useStyles();
     
     return (
         
     <div>   
         <div>
+            <Grid container spacing={10} className={classes.gridContainer}>
             <form onSubmit={handleSubmit}>
-                <input 
+
+                <Grid item lg={3} med={4} sm={6}>
+                <TextField 
                 type="text" 
-                placeholder="First Name" 
+                label="First Name" 
                 value={firstName}
                 onChange={(evt) => setFirstName(evt.target.value)}/>
+                
 
-                <input 
+                <TextField 
                 type="text" 
-                placeholder="Last Name"
+                label="Last Name"
                 value={lastName} 
                 onChange={(evt) => setLastName(evt.target.value)} />
 
-                <select name="" id="" value={position} onChange={(evt) => setPostion(evt.target.value)}>
-                    <option value="" disabled>Position</option>
-                    <option value="QB">QB</option>
-                    <option value="RB">RB</option>
-                    <option value="WR">WR</option>
-                    <option value="TE">TE</option>
-                </select>
+                <Select 
+                value={position}
+                displayEmpty 
+                onChange={(evt) => setPostion(evt.target.value)}>
+                    <MenuItem value="" disabled>Position</MenuItem>
+                    <MenuItem value="QB">QB</MenuItem>
+                    <MenuItem value="RB">RB</MenuItem>
+                    <MenuItem value="WR">WR</MenuItem>
+                    <MenuItem value="TE">TE</MenuItem>
+                </Select>
 
-                <input 
+                <TextField 
                 type="text" 
-                placeholder="Team"
+                label="Team"
                 value={team}
                 onChange={(evt) => setTeam(evt.target.value)}/>
 
-                <input 
+                <TextField 
                 type="text" 
-                placeholder="Notes" 
+                label="Notes"
+                multiline 
                 value={notes}
                 onChange={(evt) => setNotes(evt.target.value)}/>
 
-                <input 
+                <TextField 
                 type="text" 
-                placeholder="Image URL" 
+                label="Image URL" 
                 value={image}
                 onChange={(evt) => setImage(evt.target.value)}/>
 
-                <button type="submit">Add Player</button>
+                <Button
+                variant="contained"
+                color="primary" 
+                type="submit">Add Player</Button>
+                </Grid>
+
             </form>
+            </Grid>
         </div>
 
-        <div>
+        <Grid container spacing={4} className={classes.gridContainer}>
             {players.map ((player, i) => {
                 return <MyWatchlistItem key={i} player={player}/>
             })}
-        </div>
+        </Grid>
 
     </div>
     )

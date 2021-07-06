@@ -1,10 +1,9 @@
 import {useDispatch, useSelector} from 'react-redux';
+import React from 'react';
 import {useEffect, useState} from 'react';
 import './ConsensusRankings.css';
 import { makeStyles } from '@material-ui/core/styles';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
+import { Tab, Tabs, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
 import ConsensusListItem from '../ConsensusListItem/ConsensusListItem';
 
 function ConsensusRankings () {
@@ -20,25 +19,6 @@ function ConsensusRankings () {
             payload: 'all'
         });
     }, []);
-
-    //define table parameters
-    const useStyles = makeStyles({
-        table: {
-            minWidth: 650,
-            margin: "0, auto"
-        },
-        tableContainer: {
-            borderRadius: 25,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: 950
-        },
-        tableHeaderCell: {
-            fontWeight: 'bold'
-        }
-    })
-
-    const classes = useStyles();
 
     const fetchAll = () => {
         //dispatch to collect data on all players
@@ -79,19 +59,52 @@ function ConsensusRankings () {
             payload: 'te'
         })
     }
-    
+
+    //define table parameters
+        const useStyles = makeStyles({
+            root: {
+                flexGrow: 1,
+              },
+            navBar: {
+                minWidth: 650,
+            },
+            table: {
+                minWidth: 650,
+                margin: "0, auto"
+            },
+            tableContainer: {
+                borderRadius: 25,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                maxWidth: 950
+            },
+            tableHeaderCell: {
+                fontWeight: 'bold'
+            }
+        })
+
+    const classes = useStyles();
+
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+      };
 
     return ( 
+    
     <div>
         <div className="centerTable">
             <h2>Dynasty: Consensus Ranked Players</h2>
-            <Breadcrumbs className="breadcrumbs">
-            <Link color="inherit" onClick={fetchAll}>All</Link>
-            <Link color="inherit" onClick={fetchQb}>QB</Link>
-            <Link color="inherit" onClick={fetchRb}>RB</Link>
-            <Link color="inherit" onClick={fetchWr}>WR</Link>
-            <Link color="inherit" onClick={fetchTe}>TE</Link>
-            </Breadcrumbs>
+            <Paper className={classes.navBar}>
+                <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered >
+                <Tab label="All" onClick={fetchAll} />
+                <Tab label="QB" onClick={fetchQb} />
+                <Tab label="RB" onClick={fetchRb} />
+                <Tab label="WR" onClick={fetchWr} />
+                <Tab label="TE" onClick={fetchTe} />
+                </Tabs>
+            </Paper>
             <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table>
                 <TableHead>

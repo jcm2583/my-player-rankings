@@ -12,7 +12,7 @@ function ConsensusListItem ({player}) {
              >{player?.first_name} {player?.last_name}</a><Typography>#{player?.number}</Typography></TableCell>
             <TableCell>{player?.position}</TableCell>
             <TableCell>{player?.team}</TableCell>
-            <TableCell>{player?.position_rank}</TableCell>
+            <TableCell>{player?.position}{player?.position_rank}</TableCell>
         </TableRow>
     )
 }
