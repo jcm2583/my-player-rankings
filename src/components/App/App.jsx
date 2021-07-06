@@ -23,6 +23,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import './App.css';
 import ConsensusRankings from '../ConsensusRankings/ConsensusRankings';
 import MyRankings from '../MyRankings/MyRankings';
+import MyQbRankings from '../MyQbRankings/MyQbRankings';
 import MyWatchlist from '../MyWatchlist/MyWatchlist';
 import Homepage from '../Homepage/Homepage';
 
@@ -110,6 +111,13 @@ function App() {
             path='/my-rankings'
             >
             <MyRankings />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path='/my-rankings/qb'
+            >
+            <MyQbRankings />
           </ProtectedRoute>
 
           <ProtectedRoute

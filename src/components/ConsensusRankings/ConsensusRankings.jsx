@@ -97,7 +97,7 @@ function ConsensusRankings () {
         <div className="centerTable">
             <h2>Dynasty: Consensus Ranked Players</h2>
             <Paper className={classes.navBar}>
-                <Tabs value={value} onChange={handleChange} indicatorColor="Primary" textColor="primary" centered >
+                <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered >
                 <Tab label="All" onClick={fetchAll} />
                 <Tab label="QB" onClick={fetchQb} />
                 <Tab label="RB" onClick={fetchRb} />

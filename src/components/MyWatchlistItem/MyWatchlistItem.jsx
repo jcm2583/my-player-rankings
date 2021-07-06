@@ -36,6 +36,14 @@ function MyWatchlistItem ({player}) {
           });
     }
 
+    const viewNotes = (player) => {
+      console.log(player);
+      Swal.fire(
+        'Notes:',
+        `${player.notes}`,
+      )
+    }
+
     const useStyles = makeStyles({
       root: {
           minWidth: 250,
@@ -71,12 +79,16 @@ function MyWatchlistItem ({player}) {
               image={player.image_url} />
             <CardContent className={classes.text}>
             <Typography>{player.position}, {player.team}</Typography>
-            <Typography>Notes: {player.notes}</Typography>
+            {/* <Typography>Notes: {player.notes}</Typography> */}
             <Button
             variant="contained"
             color="secondary"
             startIcon={<DeleteIcon />}
             onClick={() => removePlayer(player)}>Remove Player</Button>
+            <Button
+            variant="contained"
+            color="primary"
+            onClick={() => viewNotes(player)}>View Notes</Button>
             </CardContent>
             </Card>
         </Grid>

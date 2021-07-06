@@ -64,7 +64,7 @@ function MyRankingsItem({ player }) {
             >{player?.first_name} {player?.last_name}</a><Typography>#{player?.number}</Typography></TableCell>
             <TableCell>{player?.position}</TableCell>
             <TableCell>{player?.team}</TableCell>
-            <TableCell>{player?.position_rank}</TableCell>
+            <TableCell>{player?.position}{player?.position_rank}</TableCell>
             <TableCell><Button startIcon={<KeyboardArrowUpIcon />} onClick={() => increaseRank(player)}></Button></TableCell>
             <TableCell><Button startIcon={<KeyboardArrowDownIcon />}onClick={() => decreaseRank(player)}></Button></TableCell>
             <TableCell><button onClick={() => removePlayer(player)}>REMOVE</button></TableCell>
