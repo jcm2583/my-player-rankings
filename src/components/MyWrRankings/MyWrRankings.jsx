@@ -5,44 +5,25 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
-import MyRankingsItem from '../MyRankingsItem/MyRankingsItem';
-import './MyRankingsTable.css';
+import MyWrItem from '../MyWrItem/MyWrItem';
+import MyRankingsCrTable from '../MyRankingsCrTable/MyRankingsCrTable';
 
-function MyRankingsTable () {
+function MyWrRankings () {
 
+    //declare dispatch
+    const dispatch = useDispatch();
     //declare history
     const history = useHistory();
-    //bring in player data from reducer
-    const players = useSelector(store => store.myPlayerReducer)
-
-    //define dispatch
-    const dispatch = useDispatch();
+    
+    //bring in quarterbacks from reducer
+    const players = useSelector(store => store.myPlayerReducer);
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
-            payload: 'all'
+            type: 'FETCH_MY_WR',
+            payload: 'wr'
         });
     }, []);
-
-    //define table parameters
-    const useStyles = makeStyles({
-        table: {
-            minWidth: 650,
-            margin: "0, auto"
-        },
-        tableContainer: {
-            borderRadius: 25,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: 950
-        },
-        tableHeaderCell: {
-            fontWeight: 'bold'
-        }
-    })
-
-    const classes = useStyles();
 
     const fetchAll = () => {
         //dispatch to collect data on all players
@@ -50,6 +31,7 @@ function MyRankingsTable () {
             type: 'FETCH_ALL_MY_PLAYERS',
             payload: 'all'
         })
+        history.push('/my-rankings')
     }
 
     const fetchQb = () => {
@@ -88,9 +70,27 @@ function MyRankingsTable () {
         history.push('/my-rankings/te')
     }
 
+    //define table parameters
+    const useStyles = makeStyles({
+        table: {
+            minWidth: 650,
+            margin: "0, auto"
+        },
+        tableContainer: {
+            borderRadius: 25,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            maxWidth: 950
+        },
+        tableHeaderCell: {
+            fontWeight: 'bold'
+        }
+    })
+
+    const classes = useStyles();
 
     return (
-    <div>
+        <div>
             
         <div className="centerTable">
             <h2>My Player Rankings</h2>
@@ -110,22 +110,24 @@ function MyRankingsTable () {
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
-                        <TableCell>Increase Rank</TableCell>
-                        <TableCell>Decrease Rank</TableCell>
+                        <TableCell>Increase Position Rank</TableCell>
+                        <TableCell>Decrease Position Rank</TableCell>
                         <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {players.map ((player, i) => {
-                        return <MyRankingsItem key={i} player={player} />
+                        return <MyWrItem key={i} player={player} />
                     })}
                 </TableBody>
                 </Table>
             </TableContainer>
         </div>
-    
+        <div>
+            <MyRankingsCrTable /> 
+        </div>
     </div>
     )
 }
 
-export default MyRankingsTable;
+export default MyWrRankings; 

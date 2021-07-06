@@ -20,7 +20,7 @@ function MyQbRankings () {
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH__MY_QB',
+            type: 'FETCH_MY_QB',
             payload: 'qb'
         });
     }, []);
@@ -46,28 +46,28 @@ function MyQbRankings () {
     const fetchRb = () => {
         //dispatch to collect rb data
         dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
+            type: 'FETCH_MY_RB',
             payload: 'rb'
         })
-        history.push('/my-rankings')
+        history.push('/my-rankings/rb')
     }
 
     const fetchWr = () => {
         //dispatch to collect wr data
         dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
+            type: 'FETCH_MY_WR',
             payload: 'wr'
         })
-        history.push('/my-rankings')
+        history.push('/my-rankings/wr')
     }
 
     const fetchTe = () => {
         //dispatch to collect te data
         dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
+            type: 'FETCH_MY_TE',
             payload: 'te'
         })
-        history.push('/my-rankings')
+        history.push('/my-rankings/te')
     }
 
     //define table parameters
@@ -110,8 +110,8 @@ function MyQbRankings () {
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
-                        <TableCell>Increase Rank</TableCell>
-                        <TableCell>Decrease Rank</TableCell>
+                        <TableCell>Increase Position Rank</TableCell>
+                        <TableCell>Decrease Position Rank</TableCell>
                         <TableCell></TableCell>
                     </TableRow>
                 </TableHead>

@@ -10,7 +10,7 @@ function* fetchAllMyPlayers (action) {
         console.log(response.data);
         yield put({type: 'SET_MY_PLAYERS', payload: response.data})
     } catch (err) {
-        console.log("Error in GET player saga", err);
+        console.log("Error in GET all player saga", err);
     }
 }
 
@@ -22,10 +22,45 @@ function* fetchMyQb (action) {
         console.log(response.data);
         yield put({type: 'SET_MY_QB', payload: response.data})
     } catch (err) {
-        console.log("Error in GET qb saga", err);
+        console.log("Error in GET my qb saga", err);
     }
 }
 
+//create a function to get RB
+function* fetchMyRb (action) {
+    console.log(action.payload);
+    try {
+        const response = yield axios.get(`/api/my-rankings/${action.payload}`);
+        console.log(response.data);
+        yield put({type: 'SET_MY_RB', payload: response.data})
+    } catch (err) {
+        console.log('Error in GET my rb saga', err);
+    }
+}
+
+//create a function to get WR
+function* fetchMyWr (action) {
+    console.log(action.payload);
+    try {
+        const response = yield axios.get(`api/my-rankings/${action.payload}`);
+        console.log(response.data);
+        yield put({type: 'SET_MY_WR', payload: response.data})
+    } catch (err) {
+        console.log('Error in GET my wr saga', err);
+    }
+}
+
+//create a function to get TE
+function* fetchMyTe (action) {
+    console.log(action.payoad);
+    try {
+        const response = yield axios.get(`api/my-rankings/${action.payload}`);
+        console.log(response.data);
+        yield put({type: 'SET_MY_TE', payload: response.data})
+    } catch (err) {
+        console.log('Error in GET my te saga', err);
+    }
+}
 //define addPlayer function to post data to database
 function* addPlayer (action) {
     console.log(action.payload);
@@ -74,16 +109,58 @@ function* changeQbRank (action) {
     }
 }
 
+//create a function to change the rb rank
+function* changeRbRank (action) {
+    console.log(action.payload);
+    try {
+        yield axios.put(`api/my-rankings/rb/${action.payload.player.id}`, action.payload);
+        yield put({type: 'FETCH_MY_RB', payload: 'rb'})
+    } catch (err) {
+        console.log('Error in change rb rank saga', err);
+    }
+}
+
+//create a function to change the wr rank
+function* changeWrRank (action) {
+    console.log(action.payload);
+    try{
+        yield axios.put(`api/my-rankings/wr/${action.payload.player.id}`, action.payload);
+        yield put({type: 'FETCH_MY_WR', payload: 'wr'})
+    } catch (err) {
+        console.log('Error in change wr rank saga', err);
+    }
+}
+
+//create a function to change the te rank
+function* changeTeRank (action) {
+    console.log(action.payload);
+    try {
+        yield axios.put(`api/my-rankings/te/${action.payload.player.id}`, action.payload);
+        yield put({type: 'FETCH_MY_TE', payload: 'te'});
+    } catch (err) {
+        console.log('Error in change te rank saga', err);
+    }
+}
+
 // create a saga that will
 function* myRankingsSaga () {
     yield takeLatest('FETCH_ALL_MY_PLAYERS', fetchAllMyPlayers);
-    yield takeLatest('FETCH_MY_QB', fetchMyQb)
+    yield takeLatest('FETCH_MY_QB', fetchMyQb);
+    yield takeLatest('FETCH_MY_RB', fetchMyRb);
+    yield takeLatest('FETCH_MY_WR', fetchMyWr);
+    yield takeLatest('FETCH_MY_TE', fetchMyTe);
     yield takeLatest('ADD_PLAYER', addPlayer);
     yield takeLatest('REMOVE_PLAYER', removePlayer);
     yield takeLatest('INCREASE_ALL_RANK', changeAllRank);
     yield takeLatest('DECREASE_ALL_RANK', changeAllRank);
     yield takeLatest('INCREASE_QB_RANK', changeQbRank);
     yield takeLatest('DECREASE_QB_RANK', changeQbRank);
+    yield takeLatest('INCREASE_RB_RANK', changeRbRank);
+    yield takeLatest('DECREASE_RB_RANK', changeRbRank);
+    yield takeLatest('INCREASE_WR_RANK', changeWrRank);
+    yield takeLatest('DECREASE_WR_RANK', changeWrRank);
+    yield takeLatest('INCREASE_TE_RANK', changeTeRank);
+    yield takeLatest('DECREASE_TE_RANK', changeTeRank);
 }
 
 export default myRankingsSaga;

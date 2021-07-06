@@ -5,7 +5,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 
-function MyQbItem ({player}) {
+function MyTeItem ({player}) {
 
     const dispatch = useDispatch();
         //create a function that will send a delete player request to the saga
@@ -35,19 +35,19 @@ function MyQbItem ({player}) {
         }
     
         //create a function that will send an increase player rank request to the saga
-        const increaseQbRank = (player) => {
+        const increaseTeRank = (player) => {
             console.log('increase button clicked', player);
             dispatch({
-                type: 'INCREASE_QB_RANK',
+                type: 'INCREASE_TE_RANK',
                 payload: {player, direction: 'down'}
             })
         }
     
         //create a function that will send an decrease the player rank request to the saga
-        const decreaseQbRank = (player) => {
+        const decreaseTeRank = (player) => {
             console.log('decrease button clicked', player);
             dispatch({
-                type: 'DECREASE_QB_RANK',
+                type: 'DECREASE_TE_RANK',
                 payload: {player, direction: 'up'}
             })
         }
@@ -61,12 +61,12 @@ function MyQbItem ({player}) {
         <TableCell>{player?.position}</TableCell>
         <TableCell>{player?.team}</TableCell>
         <TableCell>{player?.position}{player?.position_rank}</TableCell>
-        <TableCell><Button startIcon={<KeyboardArrowUpIcon />} onClick={() => increaseQbRank(player)}></Button></TableCell>
-        <TableCell><Button startIcon={<KeyboardArrowDownIcon />}onClick={() => decreaseQbRank(player)}></Button></TableCell>
+        <TableCell><Button startIcon={<KeyboardArrowUpIcon />} onClick={() => increaseTeRank(player)}></Button></TableCell>
+        <TableCell><Button startIcon={<KeyboardArrowDownIcon />}onClick={() => decreaseTeRank(player)}></Button></TableCell>
         <TableCell><button onClick={() => removePlayer(player)}>REMOVE</button></TableCell>
     </TableRow>
 )
     
 }
 
-export default MyQbItem;
+export default MyTeItem;

@@ -5,27 +5,28 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 
-function MyQbItem ({player}) {
+function MyRbItem ({player}) {
 
     const dispatch = useDispatch();
-        //create a function that will send a delete player request to the saga
-        const removePlayer = (player) => {
-            //alert user to confirm that they want to delete selected player
-            Swal.fire({
-                title: 'Remove Player',
-                text: "Are you sure you want to remove player?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, remove player!'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    dispatch({
-                        type: 'REMOVE_PLAYER',
-                        payload: player
-                    });
-                  Swal.fire(
+        
+    //create a function that will send a delete player request to the saga
+    const removePlayer = (player) => {
+    //alert user to confirm that they want to delete selected player
+        Swal.fire({
+            title: 'Remove Player',
+            text: "Are you sure you want to remove player?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, remove player!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch({
+                    type: 'REMOVE_PLAYER',
+                    payload: player
+                });
+                Swal.fire(
                     'Removed!',
                     'The selected player has been removed.',
                     'success'
@@ -35,22 +36,23 @@ function MyQbItem ({player}) {
         }
     
         //create a function that will send an increase player rank request to the saga
-        const increaseQbRank = (player) => {
+        const increaseRbRank = (player) => {
             console.log('increase button clicked', player);
             dispatch({
-                type: 'INCREASE_QB_RANK',
+                type: 'INCREASE_RB_RANK',
                 payload: {player, direction: 'down'}
             })
         }
     
         //create a function that will send an decrease the player rank request to the saga
-        const decreaseQbRank = (player) => {
+        const decreaseRbRank = (player) => {
             console.log('decrease button clicked', player);
             dispatch({
-                type: 'DECREASE_QB_RANK',
+                type: 'DECREASE_RB_RANK',
                 payload: {player, direction: 'up'}
             })
         }
+
     return (
         <TableRow>
         <TableCell>{player?.overall_rank}</TableCell>
@@ -61,12 +63,12 @@ function MyQbItem ({player}) {
         <TableCell>{player?.position}</TableCell>
         <TableCell>{player?.team}</TableCell>
         <TableCell>{player?.position}{player?.position_rank}</TableCell>
-        <TableCell><Button startIcon={<KeyboardArrowUpIcon />} onClick={() => increaseQbRank(player)}></Button></TableCell>
-        <TableCell><Button startIcon={<KeyboardArrowDownIcon />}onClick={() => decreaseQbRank(player)}></Button></TableCell>
+        <TableCell><Button startIcon={<KeyboardArrowUpIcon />} onClick={() => increaseRbRank(player)}></Button></TableCell>
+        <TableCell><Button startIcon={<KeyboardArrowDownIcon />}onClick={() => decreaseRbRank(player)}></Button></TableCell>
         <TableCell><button onClick={() => removePlayer(player)}>REMOVE</button></TableCell>
     </TableRow>
 )
     
 }
 
-export default MyQbItem;
+export default MyRbItem;
