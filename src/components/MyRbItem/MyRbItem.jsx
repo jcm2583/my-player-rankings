@@ -24,7 +24,7 @@ function MyRbItem ({player}) {
             if (result.isConfirmed) {
                 dispatch({
                     type: 'REMOVE_PLAYER',
-                    payload: player
+                    payload: {player, pos: 'rb'}
                 });
                 Swal.fire(
                     'Removed!',

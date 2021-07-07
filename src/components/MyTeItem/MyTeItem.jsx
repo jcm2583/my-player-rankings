@@ -23,7 +23,7 @@ function MyTeItem ({player}) {
                 if (result.isConfirmed) {
                     dispatch({
                         type: 'REMOVE_PLAYER',
-                        payload: player
+                        payload: {player, pos: 'te'}
                     });
                   Swal.fire(
                     'Removed!',

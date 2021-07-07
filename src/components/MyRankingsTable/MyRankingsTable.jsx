@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
+import { Tab, Tabs, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import React from 'react';
 import MyRankingsItem from '../MyRankingsItem/MyRankingsItem';
 import './MyRankingsTable.css';
 
@@ -24,25 +25,6 @@ function MyRankingsTable () {
             payload: 'all'
         });
     }, []);
-
-    //define table parameters
-    const useStyles = makeStyles({
-        table: {
-            minWidth: 650,
-            margin: "0, auto"
-        },
-        tableContainer: {
-            borderRadius: 25,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: 950
-        },
-        tableHeaderCell: {
-            fontWeight: 'bold'
-        }
-    })
-
-    const classes = useStyles();
 
     const fetchAll = () => {
         //dispatch to collect data on all players
@@ -88,19 +70,38 @@ function MyRankingsTable () {
         history.push('/my-rankings/te')
     }
 
+    //define table parameters
+    const useStyles = makeStyles({
+        table: {
+            minWidth: 650,
+            margin: "0, auto"
+        },
+        tableContainer: {
+            borderRadius: 25,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            marginTop: '32px',
+            maxWidth: 950
+        },
+        tableHeaderCell: {
+            fontWeight: 'bold'
+        }
+        })
+    
+    const classes = useStyles();
 
     return (
     <div>
             
         <div className="centerTable">
             <h2>My Player Rankings</h2>
-            <Breadcrumbs className="breadcrumbs">
-            <Link color="inherit" onClick={fetchAll}>All</Link>
-            <Link color="inherit" onClick={fetchQb}>QB</Link>
-            <Link color="inherit" onClick={fetchRb}>RB</Link>
-            <Link color="inherit" onClick={fetchWr}>WR</Link>
-            <Link color="inherit" onClick={fetchTe}>TE</Link>
-            </Breadcrumbs>
+            <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+                    <Button onClick={fetchAll}>ALL</Button>
+                    <Button onClick={fetchQb}>QB</Button>
+                    <Button onClick={fetchRb}>RB</Button>
+                    <Button onClick={fetchWr}>WR</Button> 
+                    <Button onClick={fetchTe}>TE</Button>
+            </ButtonGroup>
             <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table>
                 <TableHead>

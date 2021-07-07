@@ -23,7 +23,7 @@ function MyQbItem ({player}) {
                 if (result.isConfirmed) {
                     dispatch({
                         type: 'REMOVE_PLAYER',
-                        payload: player
+                        payload: {player, pos: 'qb'}
                     });
                   Swal.fire(
                     'Removed!',

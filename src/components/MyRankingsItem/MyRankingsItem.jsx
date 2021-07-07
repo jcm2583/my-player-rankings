@@ -26,7 +26,7 @@ function MyRankingsItem({ player }) {
             if (result.isConfirmed) {
                 dispatch({
                     type: 'REMOVE_PLAYER',
-                    payload: player
+                    payload: {player, pos: 'all'}
                 });
               Swal.fire(
                 'Removed!',

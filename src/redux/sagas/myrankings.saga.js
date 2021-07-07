@@ -44,9 +44,9 @@ function* addPlayer (action) {
 function* removePlayer (action) {
     console.log(action.payload);
     try {
-        yield axios.delete(`/api/my-rankings/${action.payload.id}`, action.payload)
+        yield axios.delete(`/api/my-rankings/${action.payload.player.id}`, action.payload)
         //re-render with deleted player
-        yield put({type: 'FETCH_MY_PLAYERS', payload: 'all'});
+        yield put({type: 'FETCH_MY_PLAYERS', payload: action.payload.pos});
     } catch (err) {
         console.log('Error in delete player sage', err);
     }
@@ -114,16 +114,11 @@ function* myRankingsSaga () {
     yield takeLatest('FETCH_MY_PLAYERS', fetchMyPlayers);
     yield takeLatest('ADD_PLAYER', addPlayer);
     yield takeLatest('REMOVE_PLAYER', removePlayer);
-    yield takeLatest('INCREASE_ALL_RANK', changeAllRank);
-    yield takeLatest('DECREASE_ALL_RANK', changeAllRank);
-    yield takeLatest('INCREASE_QB_RANK', changeQbRank);
-    yield takeLatest('DECREASE_QB_RANK', changeQbRank);
-    yield takeLatest('INCREASE_RB_RANK', changeRbRank);
-    yield takeLatest('DECREASE_RB_RANK', changeRbRank);
-    yield takeLatest('INCREASE_WR_RANK', changeWrRank);
-    yield takeLatest('DECREASE_WR_RANK', changeWrRank);
-    yield takeLatest('INCREASE_TE_RANK', changeTeRank);
-    yield takeLatest('DECREASE_TE_RANK', changeTeRank);
+    yield takeLatest(['INCREASE_ALL_RANK', 'DECREASE_ALL_RANK'], changeAllRank);
+    yield takeLatest(['INCREASE_QB_RANK', 'DECREASE_QB_RANK'], changeQbRank);
+    yield takeLatest(['INCREASE_RB_RANK', 'DECREASE_RB_RANK'], changeRbRank);
+    yield takeLatest(['INCREASE_WR_RANK', 'DECREASE_WR_RANK'], changeWrRank);
+    yield takeLatest(['INCREASE_TE_RANK', 'DECREASE_TE_RANK'], changeTeRank);
 }
 
 export default myRankingsSaga;

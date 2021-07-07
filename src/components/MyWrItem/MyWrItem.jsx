@@ -23,7 +23,7 @@ function MyWrItem ({player}) {
                 if (result.isConfirmed) {
                     dispatch({
                         type: 'REMOVE_PLAYER',
-                        payload: player
+                        payload: {player, pos: 'wr'}
                     });
                   Swal.fire(
                     'Removed!',

@@ -64,18 +64,19 @@ function ConsensusRankings () {
         const useStyles = makeStyles({
             root: {
                 flexGrow: 1,
-              },
+            },
             navBar: {
-                minWidth: 650,
+                maxWidth: 650,
             },
             table: {
-                minWidth: 650,
+                minWidth: 900,
                 margin: "0, auto"
             },
             tableContainer: {
                 borderRadius: 25,
                 marginLeft: 'auto',
                 marginRight: 'auto',
+                marginTop: '32px',
                 maxWidth: 950
             },
             tableHeaderCell: {
@@ -94,10 +95,10 @@ function ConsensusRankings () {
     return ( 
     
     <div>
-        <div className="centerTable">
+        <div>
             <h2>Dynasty: Consensus Ranked Players</h2>
-            <Paper className={classes.navBar}>
-                <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered >
+            <Paper className={classes.root}>
+                <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered>
                 <Tab label="All" onClick={fetchAll} />
                 <Tab label="QB" onClick={fetchQb} />
                 <Tab label="RB" onClick={fetchRb} />
