@@ -20,7 +20,7 @@ function MyQbRankings () {
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_MY_QB',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'qb'
         });
     }, []);
@@ -28,7 +28,7 @@ function MyQbRankings () {
     const fetchAll = () => {
         //dispatch to collect data on all players
         dispatch({
-            type: 'FETCH_ALL_MY_PLAYERS',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'all'
         })
         history.push('/my-rankings')
@@ -37,7 +37,7 @@ function MyQbRankings () {
     const fetchQb = () => {
         //dispatch to collect qb data
         dispatch({
-            type: 'FETCH_MY_QB',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'qb'
         })
         history.push('/my-rankings/qb')
@@ -46,7 +46,7 @@ function MyQbRankings () {
     const fetchRb = () => {
         //dispatch to collect rb data
         dispatch({
-            type: 'FETCH_MY_RB',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'rb'
         })
         history.push('/my-rankings/rb')
@@ -55,7 +55,7 @@ function MyQbRankings () {
     const fetchWr = () => {
         //dispatch to collect wr data
         dispatch({
-            type: 'FETCH_MY_WR',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'wr'
         })
         history.push('/my-rankings/wr')
@@ -64,7 +64,7 @@ function MyQbRankings () {
     const fetchTe = () => {
         //dispatch to collect te data
         dispatch({
-            type: 'FETCH_MY_TE',
+            type: 'FETCH_MY_PLAYERS',
             payload: 'te'
         })
         history.push('/my-rankings/te')
