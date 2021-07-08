@@ -6,7 +6,6 @@ function* fetchCrPlayers (action) {
     //use axios to fetch CR players
     try {
         const response = yield axios.get(`/api/consensus-rankings/${action.payload}`)
-        console.log(response.data);
         //send the data to a reducer
         yield put({type: 'SET_CR_PLAYERS', payload: response.data})
     }

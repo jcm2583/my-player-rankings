@@ -2,27 +2,28 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Tab, Tabs, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import React from 'react';
-import MyRankingsItem from '../MyRankingsItem/MyRankingsItem';
-import './MyRankingsTable.css';
+import MyRbItem from '../MyRbItem/MyRbItem';
+import MyRankingsCrTable from '../MyRankingsCrTable/MyRankingsCrTable';
 
-function MyRankingsTable () {
+function MyRbRankings () {
 
+    //declare dispatch
+    const dispatch = useDispatch();
     //declare history
     const history = useHistory();
-    //bring in player data from reducer
-    const players = useSelector(store => store.myPlayerReducer)
-
-    //define dispatch
-    const dispatch = useDispatch();
+    
+    //bring in quarterbacks from reducer
+    const players = useSelector(store => store.myPlayerReducer);
 
     useEffect(() => {
         dispatch({
             type: 'FETCH_MY_PLAYERS',
-            payload: 'all'
+            payload: 'rb'
         });
     }, []);
 
@@ -32,6 +33,7 @@ function MyRankingsTable () {
             type: 'FETCH_MY_PLAYERS',
             payload: 'all'
         })
+        history.push('/my-rankings')
     }
 
     const fetchQb = () => {
@@ -86,21 +88,21 @@ function MyRankingsTable () {
         tableHeaderCell: {
             fontWeight: 'bold'
         }
-        })
-    
+    })
+
     const classes = useStyles();
 
     return (
-    <div>
+        <div>
             
         <div className="centerTable">
             <h2>My Player Rankings</h2>
             <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-                    <Button onClick={fetchAll}>ALL</Button>
-                    <Button onClick={fetchQb}>QB</Button>
-                    <Button onClick={fetchRb}>RB</Button>
-                    <Button onClick={fetchWr}>WR</Button> 
-                    <Button onClick={fetchTe}>TE</Button>
+            <Button onClick={fetchAll}>All</Button>
+            <Button onClick={fetchQb}>QB</Button>
+            <Button onClick={fetchRb}>RB</Button>
+            <Button onClick={fetchWr}>WR</Button>
+            <Button onClick={fetchTe}>TE</Button>
             </ButtonGroup>
             <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table>
@@ -111,22 +113,24 @@ function MyRankingsTable () {
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
-                        <TableCell>Increase Rank</TableCell>
-                        <TableCell>Decrease Rank</TableCell>
+                        <TableCell>Increase Position Rank</TableCell>
+                        <TableCell>Decrease Position Rank</TableCell>
                         <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {players.map ((player, i) => {
-                        return <MyRankingsItem key={i} player={player} />
+                        return <MyRbItem key={i} player={player} />
                     })}
                 </TableBody>
                 </Table>
             </TableContainer>
         </div>
-    
+        <div>
+            <MyRankingsCrTable /> 
+        </div>
     </div>
     )
 }
 
-export default MyRankingsTable;
+export default MyRbRankings;

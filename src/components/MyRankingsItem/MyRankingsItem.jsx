@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Button from '@material-ui/core/Button';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import Swal from 'sweetalert2';
 
 function MyRankingsItem({ player }) {
@@ -26,7 +27,7 @@ function MyRankingsItem({ player }) {
             if (result.isConfirmed) {
                 dispatch({
                     type: 'REMOVE_PLAYER',
-                    payload: player
+                    payload: {player, pos: 'all'}
                 });
               Swal.fire(
                 'Removed!',
@@ -67,7 +68,7 @@ function MyRankingsItem({ player }) {
             <TableCell>{player?.position}{player?.position_rank}</TableCell>
             <TableCell><Button startIcon={<KeyboardArrowUpIcon />} onClick={() => increaseRank(player)}></Button></TableCell>
             <TableCell><Button startIcon={<KeyboardArrowDownIcon />}onClick={() => decreaseRank(player)}></Button></TableCell>
-            <TableCell><button onClick={() => removePlayer(player)}>REMOVE</button></TableCell>
+            <TableCell><Button onClick={() => removePlayer(player)} startIcon={<RemoveCircleOutlineIcon />}></Button></TableCell>
         </TableRow>
     )
 }

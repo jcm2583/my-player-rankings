@@ -2,27 +2,26 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import React from 'react'; 
-import MyQbItem from '../MyQbItem/MyQbItem';
+import MyWrItem from '../MyWrItem/MyWrItem';
 import MyRankingsCrTable from '../MyRankingsCrTable/MyRankingsCrTable';
 
-function MyQbRankings () {
+function MyWrRankings() {
 
     //declare dispatch
     const dispatch = useDispatch();
     //declare history
     const history = useHistory();
-    
+
     //bring in quarterbacks from reducer
     const players = useSelector(store => store.myPlayerReducer);
 
     useEffect(() => {
         dispatch({
             type: 'FETCH_MY_PLAYERS',
-            payload: 'qb'
+            payload: 'wr'
         });
     }, []);
 
@@ -93,43 +92,43 @@ function MyQbRankings () {
 
     return (
         <div>
-            
-        <div className="centerTable">
-            <h2>My Player Rankings</h2>
-            <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-            <Button onClick={fetchAll}>ALL</Button>
-            <Button onClick={fetchQb}>QB</Button>
-            <Button onClick={fetchRb}>RB</Button>
-            <Button onClick={fetchWr}>WR</Button>
-            <Button onClick={fetchTe}>TE</Button>
-            </ButtonGroup>
-            <TableContainer component={Paper} className={classes.tableContainer}>
-                <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell className={classes.tableHeaderCell}>Overall Rank</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Position</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Team</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
-                        <TableCell>Increase Position Rank</TableCell>
-                        <TableCell>Decrease Position Rank</TableCell>
-                        <TableCell></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {players.map ((player, i) => {
-                        return <MyQbItem key={i} player={player} />
-                    })}
-                </TableBody>
-                </Table>
-            </TableContainer>
+
+            <div className="centerTable">
+                <h2>My Player Rankings</h2>
+                <ButtonGroup variant="text" color="primary" aria-label="outlined primary button group">
+                    <Button onClick={fetchAll}>All</Button>
+                    <Button onClick={fetchQb}>QB</Button>
+                    <Button onClick={fetchRb}>RB</Button>
+                    <Button onClick={fetchWr}>WR</Button>
+                    <Button onClick={fetchTe}>TE</Button>
+                </ButtonGroup>
+                <TableContainer component={Paper} className={classes.tableContainer}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell className={classes.tableHeaderCell}>Overall Rank</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Position</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Team</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
+                                <TableCell>Increase Position Rank</TableCell>
+                                <TableCell>Decrease Position Rank</TableCell>
+                                <TableCell></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {players.map((player, i) => {
+                                return <MyWrItem key={i} player={player} />
+                            })}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
+            <div>
+                <MyRankingsCrTable />
+            </div>
         </div>
-        <div>
-            <MyRankingsCrTable /> 
-        </div>
-    </div>
     )
 }
 
-export default MyQbRankings; 
+export default MyWrRankings;

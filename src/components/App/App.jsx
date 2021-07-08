@@ -24,6 +24,9 @@ import './App.css';
 import ConsensusRankings from '../ConsensusRankings/ConsensusRankings';
 import MyRankings from '../MyRankings/MyRankings';
 import MyQbRankings from '../MyQbRankings/MyQbRankings';
+import MyRbRankings from '../MyRbRankings/MyRbRankings';
+import MyWrRankings from '../MyWrRankings/MyWrRankings';
+import MyTeRankings from '../MyTeRankings/MyTeRankings';
 import MyWatchlist from '../MyWatchlist/MyWatchlist';
 import Homepage from '../Homepage/Homepage';
 
@@ -122,6 +125,27 @@ function App() {
 
           <ProtectedRoute
             exact
+            path='/my-rankings/rb'
+            >
+            <MyRbRankings />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path='/my-rankings/wr'
+            >
+            <MyWrRankings />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path='/my-rankings/te'
+            >
+            <MyTeRankings />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
             path='/my-watchlist'
             >
             <MyWatchlist />
@@ -138,7 +162,6 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
       </div>
     </Router>
   );

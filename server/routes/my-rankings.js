@@ -75,7 +75,7 @@ router.get('/rb', (req, res) => {
     // Define query text to get from server
     const queryText = `SELECT * FROM "players"
     WHERE "user_id" = $1 AND "position" = 'RB'
-    ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
+    ORDER BY "position_rank" ASC;`;
     // use pool to retrieve the data
     pool
     .query(queryText, [req.user.id])
@@ -97,7 +97,7 @@ router.get('/wr', (req, res) => {
     // Define query text to get from server
     const queryText = `SELECT * FROM "players"
     WHERE "user_id" = $1 AND "position" = 'WR'
-    ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
+    ORDER BY "position_rank";`;
     // use pool to retrieve the data
     pool
     .query(queryText, [req.user.id])
@@ -119,7 +119,7 @@ router.get('/te', (req, res) => {
     // Define query text to get from server
     const queryText = `SELECT * FROM "players"
     WHERE "user_id" = $1 AND "position" = 'TE'
-    ORDER BY SUBSTRING("position_rank" FROM '([0-9]+)')::BIGINT ASC;`
+    ORDER BY "position_rank" ASC;`;
     // use pool to retrieve the data
     pool
     .query(queryText, [req.user.id])
@@ -191,8 +191,89 @@ router.put('/qb/:id', rejectUnauthenticated, (req, res) => {
   })
 })
 
+//create a put route to change rank of rb only
+router.put('/rb/:id', rejectUnauthenticated, (req, res) => {
+  console.log('req.params is', req.params);
+  console.log('req.user is', req.user);
+  console.log('req.body is', req.body);
 
+  //declare queryText but leave it blank to be set after conditional of which button was clicked on
+  let queryText = ''
 
+  if (req.body.direction === 'down') {
+    queryText = `UPDATE "players" SET "position_rank" = position_rank - 1 WHERE "id" = $1 AND "user_id" = $2;`;
+  } 
+  else if (req.body.direction === 'up') {
+    queryText = `UPDATE "players" SET "position_rank" = position_rank + 1 WHERE "id" = $1 AND "user_id" = $2;`;
+  }
+
+  //send request to database
+  pool
+  .query(queryText, [req.params.id, req.user.id])
+  .then(result => {
+    res.sendStatus(200);
+  })
+  .catch(err => {
+    console.log('Error in server side put', err);
+    res.sendStatus(500);
+  })
+})
+
+//create a put route to change rank of wr only
+router.put('/wr/:id', rejectUnauthenticated, (req, res) => {
+  console.log('req.params is', req.params);
+  console.log('req.user is', req.user);
+  console.log('req.body is', req.body);
+
+  //declare queryText but leave it blank to be set after conditional of which button was clicked on
+  let queryText = ''
+
+  if (req.body.direction === 'down') {
+    queryText = `UPDATE "players" SET "position_rank" = position_rank - 1 WHERE "id" = $1 AND "user_id" = $2;`;
+  } 
+  else if (req.body.direction === 'up') {
+    queryText = `UPDATE "players" SET "position_rank" = position_rank + 1 WHERE "id" = $1 AND "user_id" = $2;`;
+  }
+
+  //send request to database
+  pool
+  .query(queryText, [req.params.id, req.user.id])
+  .then(result => {
+    res.sendStatus(200);
+  })
+  .catch(err => {
+    console.log('Error in server side put', err);
+    res.sendStatus(500);
+  })
+})
+
+//create a put route to change rank of te only
+router.put('/te/:id', rejectUnauthenticated, (req, res) => {
+  console.log('req.params is', req.params);
+  console.log('req.user is', req.user);
+  console.log('req.body is', req.body);
+
+  //declare queryText but leave it blank to be set after conditional of which button was clicked on
+  let queryText = ''
+
+  if (req.body.direction === 'down') {
+    queryText = `UPDATE "players" SET "position_rank" = position_rank - 1 WHERE "id" = $1 AND "user_id" = $2;`;
+  } 
+  else if (req.body.direction === 'up') {
+    queryText = `UPDATE "players" SET "position_rank" = position_rank + 1 WHERE "id" = $1 AND "user_id" = $2;`;
+  }
+
+  //send request to database
+  pool
+  .query(queryText, [req.params.id, req.user.id])
+  .then(result => {
+    res.sendStatus(200);
+  })
+  .catch(err => {
+    console.log('Error in server side put', err);
+    res.sendStatus(500);
+  })
+})
 
 
 
