@@ -17,9 +17,10 @@ function MyWatchlistItem ({player}) {
             title: 'Remove Player',
             text: "Are you sure you want to remove player?",
             icon: 'warning',
+            iconColor: '#f37e21',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#2196f3',
+            cancelButtonColor: '#f37e21',
             confirmButtonText: 'Yes, remove player!'
           }).then((result) => {
             if (result.isConfirmed) {
@@ -27,26 +28,32 @@ function MyWatchlistItem ({player}) {
                     type: 'REMOVE_WL_PLAYER',
                     payload: player 
                 });
-              Swal.fire(
-                'Removed!',
-                'The selected player has been removed.',
-                'success'
-              )
+              Swal.fire({
+                title: 'Removed!',
+                text: 'The selected player has been removed.',
+                icon: 'success',
+                iconColor: '#f37e21',
+                background: '#c7c7c7',
+                confirmButtonColor: '#2196f3',
+              })
             }
           });
     }
 
     const viewNotes = (player) => {
       console.log(player);
-      Swal.fire(
-        'Notes:',
-        `${player.notes}`,
-      )
+      Swal.fire({
+        title: 'Notes:',
+        text: player.notes,
+        background: '#fafafa',
+        confirmButtonColor: '#2196f3',
+      })
     }
 
     const useStyles = makeStyles({
       root: {
           minWidth: 250,
+          marginTop: 32,
       },
       gridContainer: {
           paddingLeft: "80px",
@@ -79,16 +86,15 @@ function MyWatchlistItem ({player}) {
               image={player.image_url} />
             <CardContent className={classes.text}>
             <Typography>{player.position}, {player.team}</Typography>
-            {/* <Typography>Notes: {player.notes}</Typography> */}
             <Button
-            variant="contained"
-            color="secondary"
-            startIcon={<DeleteIcon />}
-            onClick={() => removePlayer(player)}>Remove Player</Button>
-            <Button
-            variant="contained"
-            color="primary"
-            onClick={() => viewNotes(player)}>View Notes</Button>
+              variant="contained"
+              style={{backgroundColor: '#2196f3', marginTop: 8}}
+              onClick={() => viewNotes(player)}>View Notes</Button>
+              <Button
+              variant="contained"
+              style={{backgroundColor: '#f37e21', marginTop: 8}}
+              startIcon={<DeleteIcon />}
+              onClick={() => removePlayer(player)}>Remove Player</Button>
             </CardContent>
             </Card>
         </Grid>

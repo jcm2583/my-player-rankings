@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Grid, MenuItem, Select, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import MyWatchlistItem from '../MyWatchlistItem/MyWatchlistItem';
 
 function MyWatchlist () {
@@ -83,24 +84,33 @@ function MyWatchlist () {
         
     <div>   
         <div>
+            <h2>Welcome to the My Watchlist Page!</h2>
+            <h3 className="centerText">Fill out the form below to add players to keep an eye on as the season progresses</h3>
+            <h3 className="centerText2">Add an image if you like, and don't forget to add notes!</h3>
+            
             <form onSubmit={handleSubmit}>
 
                 <TextField 
                 type="text" 
-                label="First Name" 
+                label="First Name"
+                variant="outlined"
+                style={{marginLeft: 80, marginTop: 32}} 
                 value={firstName}
                 onChange={(evt) => setFirstName(evt.target.value)}/>
                 
-
                 <TextField 
                 type="text" 
                 label="Last Name"
+                variant="outlined"
+                style={{marginLeft: 32, marginTop: 32}}
                 value={lastName} 
                 onChange={(evt) => setLastName(evt.target.value)} />
 
                 <Select 
                 value={position}
+                style={{marginLeft: 32, marginTop: 32, marginBottom: 32}}
                 displayEmpty 
+                variant="outlined"
                 onChange={(evt) => setPostion(evt.target.value)}>
                     <MenuItem value="" disabled>Position</MenuItem>
                     <MenuItem value="QB">QB</MenuItem>
@@ -112,25 +122,32 @@ function MyWatchlist () {
                 <TextField 
                 type="text" 
                 label="Team"
+                variant="outlined"
+                style={{marginLeft: 32, marginTop: 32}}
                 value={team}
                 onChange={(evt) => setTeam(evt.target.value)}/>
 
                 <TextField 
                 type="text" 
                 label="Notes"
+                variant="outlined"
+                style={{marginLeft: 32, marginTop: 32}}
                 multiline 
                 value={notes}
                 onChange={(evt) => setNotes(evt.target.value)}/>
 
                 <TextField 
                 type="text" 
-                label="Image URL" 
+                label="Image URL"
+                variant="outlined" 
+                style={{marginLeft: 32, marginTop: 32}}
                 value={image}
                 onChange={(evt) => setImage(evt.target.value)}/>
 
                 <Button
                 variant="contained"
-                color="primary" 
+                style={{backgroundColor: '#2196f3', fontFamily: `"Optima", sans-serif`, marginLeft: 650}} 
+                startIcon={<AddCircleOutlineIcon />}
                 type="submit">Add Player</Button>
 
             </form>
