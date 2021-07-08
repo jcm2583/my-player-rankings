@@ -82,7 +82,9 @@ function ConsensusRankings () {
                 maxWidth: 950
             },
             tableHeaderCell: {
-                fontWeight: 'bold'
+                fontWeight: 'bold',
+                backgroundColor: '#0069c0',
+                color: '#ffffff',
             }
         })
 

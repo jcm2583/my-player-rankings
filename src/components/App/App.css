@@ -5,10 +5,10 @@ body,
 }
 
 body {
-  font-family: TypeWolf, Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Optima", sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fafafa;
+  background-color: #eceff1;
   color: #000000;
 }
 
@@ -75,8 +75,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #2196f3;
-  color: #2196f3;
+  border-color: #f37e21;
+  color: #f37e21;
 }
 
 /* --------------------------------------------------------------------------------
@@ -104,10 +104,11 @@ Form Treatment
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  background-color: #c7c7c7;
-  /* outline-style: solid; */
-  /* outline-color: #000407; */
-  border-radius: 3px;
+  background-color: #fafafa;
+  border: solid;
+  /* outline-color: #f37e21; */
+  border-color: #2196f3;
+  border-radius: 8px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
 

@@ -19,21 +19,26 @@ function MyRankingsItem({ player }) {
             title: 'Remove Player',
             text: "Are you sure you want to remove player?",
             icon: 'warning',
+            iconColor: '#f37e21',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            background: '#fafafa',
+            confirmButtonColor: '#2196f3',
+            cancelButtonColor: '#f37e21',
             confirmButtonText: 'Yes, remove player!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 dispatch({
                     type: 'REMOVE_PLAYER',
                     payload: {player, pos: 'all'}
                 });
-              Swal.fire(
-                'Removed!',
-                'The selected player has been removed.',
-                'success'
-              )
+              Swal.fire({
+                title: 'Removed!',
+                text: 'The selected player has been removed.',
+                icon: 'success',
+                iconColor: '#f37e21',
+                background: '#c7c7c7',
+                confirmButtonColor: '#2196f3',
+              })
             }
           });
     }
@@ -66,9 +71,24 @@ function MyRankingsItem({ player }) {
             <TableCell>{player?.position}</TableCell>
             <TableCell>{player?.team}</TableCell>
             <TableCell>{player?.position}{player?.position_rank}</TableCell>
-            <TableCell><Button startIcon={<KeyboardArrowUpIcon />} onClick={() => increaseRank(player)}></Button></TableCell>
-            <TableCell><Button startIcon={<KeyboardArrowDownIcon />}onClick={() => decreaseRank(player)}></Button></TableCell>
-            <TableCell><Button onClick={() => removePlayer(player)} startIcon={<RemoveCircleOutlineIcon />}></Button></TableCell>
+            <TableCell>
+                <Button 
+                startIcon={<KeyboardArrowUpIcon style={{color: "#2196f3", fontSize: 35}}/>} 
+                onClick={() => increaseRank(player)}>
+                </Button>
+            </TableCell>
+            <TableCell>
+                <Button 
+                startIcon={<KeyboardArrowDownIcon style={{color: "#2196f3", fontSize: 35}} />}
+                onClick={() => decreaseRank(player)}>
+                </Button>
+            </TableCell>
+            <TableCell>
+                <Button 
+                onClick={() => removePlayer(player)} 
+                startIcon={<RemoveCircleOutlineIcon style={{color: "#f37e21", fontSize: 35}} />}>
+                </Button>
+            </TableCell>
         </TableRow>
     )
 }

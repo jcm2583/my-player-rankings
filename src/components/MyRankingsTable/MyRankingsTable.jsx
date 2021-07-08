@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Tab, Tabs, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import React from 'react';
@@ -84,7 +84,9 @@ function MyRankingsTable () {
             maxWidth: 950
         },
         tableHeaderCell: {
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            backgroundColor: '#2196f3',
+            color: '#000000',
         }
         })
     
@@ -111,9 +113,9 @@ function MyRankingsTable () {
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
-                        <TableCell>Increase Rank</TableCell>
-                        <TableCell>Decrease Rank</TableCell>
-                        <TableCell></TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Increase Rank</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Decrease Rank</TableCell>
+                        <TableCell style={{backgroundColor: "#f37e21"}}></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

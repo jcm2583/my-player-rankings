@@ -24,6 +24,9 @@ function Homepage() {
     const useStyles = makeStyles({
         root: {
             minWidth: 250,
+            border: 'solid',
+            borderColor: '#0069c0',
+            borderRadius: 8,
         },
         gridContainer: {
             paddingLeft: "80px",

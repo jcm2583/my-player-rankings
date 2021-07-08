@@ -111,7 +111,11 @@ function MyRankings () {
                 label="Player Page URL"
                 value={playerUrl}
                 onChange={(evt) => setPlayerUrl(evt.target.value)} />
-                <Button type="submit" startIcon={<AddCircleOutlineIcon />}>Add Player</Button>
+                <Button 
+                variant="contained"
+                style={{backgroundColor: "#2196f3", fontFamily: `"Optima", sans-serif`}}
+                type="submit" 
+                startIcon={<AddCircleOutlineIcon />}>Add Player</Button>
             </form>
         </div>
         <div>

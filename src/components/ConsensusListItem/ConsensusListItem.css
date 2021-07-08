@@ -1,0 +1,11 @@
+.playerLink {
+    text-decoration: none;
+}
+
+.playerLink:hover {
+    color: navy;
+}
+
+.playerLink:visited {
+    color: blue;
+}
