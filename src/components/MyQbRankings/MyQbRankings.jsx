@@ -81,6 +81,7 @@ function MyQbRankings () {
             borderRadius: 25,
             marginLeft: 'auto',
             marginRight: 'auto',
+            marginTop: '32px',
             maxWidth: 950
         },
         tableHeaderCell: {

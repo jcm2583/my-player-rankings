@@ -1,8 +1,13 @@
 import {useDispatch, useSelector} from 'react-redux';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import MyRankingsCrTable from '../MyRankingsCrTable/MyRankingsCrTable';
 import './MyRankings.css';
 import MyRankingsTable from '../MyRankingsTable/MyRankingsTable';
+import { Grid, MenuItem, Select, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+
 
 
 function MyRankings () {
@@ -54,55 +59,59 @@ function MyRankings () {
     <div> 
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" 
-                placeholder="Overall Rank"
-                value={overallRank}
-                onChange={(evt) => setOverallRank(evt.target.value)} />
-                
-                <input 
+                <TextField 
                 type="text" 
-                placeholder="Position Rank"
-                value={positionRank}
-                onChange={(evt) => setPositionRank(evt.target.value)} />
-
-                <input 
-                type="text" 
-                placeholder="First Name"
+                label="First Name"
                 value={firstName}
                 onChange={(evt) => setFirstName(evt.target.value)}/>
 
-                <input 
+                <TextField 
                 type="text" 
-                placeholder="Last Name"
+                label="Last Name"
                 value={lastName}
                 onChange={(evt) => setLastName(evt.target.value)}/>
 
-                <input 
+                <TextField 
                 type="text" 
-                placeholder="Number"
+                label="Number"
                 value={number}
                 onChange={(evt) => setNumber(evt.target.value)}/>
 
-                <select name="position" id="position" value={position}
+                <Select
+                value={position}
+                displayEmpty
                 onChange={(evt) => setPosition(evt.target.value)}>
-                    <option value="" disabled>Position</option>
-                    <option value="QB">QB</option>
-                    <option value="RB">RB</option>
-                    <option value="WR">WR</option>
-                    <option value="TE">TE</option>
-                </select>
-                <input 
+                    <MenuItem value="" disabled>Position</MenuItem>
+                    <MenuItem value="QB">QB</MenuItem>
+                    <MenuItem value="RB">RB</MenuItem>
+                    <MenuItem value="WR">WR</MenuItem>
+                    <MenuItem value="TE">TE</MenuItem>
+                </Select>
+                
+                <TextField 
                 type="text" 
-                placeholder="Team"
+                label="Team"
                 value={team}
                 onChange={(evt) => setTeam(evt.target.value)} />
 
-                <input 
+                <TextField
                 type="text" 
-                placeholder="Player Page URL"
+                label="Overall Rank"
+                value={overallRank}
+                onChange={(evt) => setOverallRank(evt.target.value)} />
+                
+                <TextField 
+                type="text" 
+                label="Position Rank"
+                value={positionRank}
+                onChange={(evt) => setPositionRank(evt.target.value)} />
+
+                <TextField 
+                type="text" 
+                label="Player Page URL"
                 value={playerUrl}
                 onChange={(evt) => setPlayerUrl(evt.target.value)} />
-                <button type="submit">Add Player</button>
+                <Button type="submit" startIcon={<AddCircleOutlineIcon />}>Add Player</Button>
             </form>
         </div>
         <div>

@@ -64,19 +64,21 @@ function ConsensusRankings () {
         const useStyles = makeStyles({
             root: {
                 flexGrow: 1,
-            },
-            navBar: {
-                maxWidth: 650,
+                maxWidth: 950,
+                borderRadius: 12,
+                marginTop: '32px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
             },
             table: {
                 minWidth: 900,
                 margin: "0, auto"
             },
             tableContainer: {
-                borderRadius: 25,
+                borderRadius: 24,
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                marginTop: '32px',
+                marginTop: '16px',
                 maxWidth: 950
             },
             tableHeaderCell: {

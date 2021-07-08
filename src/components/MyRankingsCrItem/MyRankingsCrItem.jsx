@@ -1,4 +1,6 @@
 import {TableCell, TableRow, Typography} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 
@@ -28,7 +30,7 @@ function MyRankingsCrItem ({player}) {
             <TableCell>{player?.position}</TableCell>
             <TableCell>{player?.team}</TableCell>
             <TableCell>{player?.position}{player?.position_rank}</TableCell>
-            <TableCell><button onClick={() => addMyPlayer(player)}>Add to My Rankings</button></TableCell>
+            <TableCell><Button startIcon={<AddCircleOutlineIcon />} onClick={() => addMyPlayer(player)}>My Rankings</Button></TableCell>
         </TableRow>
     )
 }

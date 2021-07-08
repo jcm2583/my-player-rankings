@@ -65,16 +65,21 @@ function MyRankingsCrTable () {
         const useStyles = makeStyles({
             root: {
                 flexGrow: 1,
-            },
-            table: {
-                minWidth: 650,
-                margin: "0, auto"
-            },
-            tableContainer: {
-                borderRadius: 25,
+                maxWidth: 950,
+                borderRadius: 12,
+                marginTop: '32px',
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                marginTop: '32px',
+            },
+            table: {
+                minWidth: 900,
+                margin: "0, auto",
+            },
+            tableContainer: {
+                borderRadius: 24,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginTop: '16px',
                 maxWidth: 950
             },
             tableHeaderCell: {

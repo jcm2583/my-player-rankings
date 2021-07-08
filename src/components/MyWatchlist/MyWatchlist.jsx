@@ -83,10 +83,8 @@ function MyWatchlist () {
         
     <div>   
         <div>
-            <Grid container spacing={10} className={classes.gridContainer}>
             <form onSubmit={handleSubmit}>
 
-                <Grid item lg={3} med={4} sm={6}>
                 <TextField 
                 type="text" 
                 label="First Name" 
@@ -134,10 +132,8 @@ function MyWatchlist () {
                 variant="contained"
                 color="primary" 
                 type="submit">Add Player</Button>
-                </Grid>
 
             </form>
-            </Grid>
         </div>
 
         <Grid container spacing={4} className={classes.gridContainer}>
