@@ -66,7 +66,7 @@ function MyTeItem ({player}) {
         >{player?.first_name} {player?.last_name}</a><Typography>#{player?.number}</Typography></TableCell>
         <TableCell>{player?.position}</TableCell>
         <TableCell>{player?.team}</TableCell>
-        <TableCell style={{color: "#f37e21"}}>{player?.position}{player?.position_rank}</TableCell>
+        <TableCell style={{color: "#f37e21"}}>{player?.position} {player?.position_rank}</TableCell>
         <TableCell>
             <Button 
             startIcon={<KeyboardArrowUpIcon style={{color: "#2196f3", fontSize: 35}}/>} 
