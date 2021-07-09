@@ -75,7 +75,7 @@ function App() {
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/homepage"
+            authRedirect="/my-rankings"
           >
             <LoginPage />
           </ProtectedRoute>
@@ -97,7 +97,7 @@ function App() {
             // - else shows LandingPage at "/home"
             exact
             path="/home"
-            authRedirect="/homepage"
+            authRedirect="/my-rankings"
           >
             <LandingPage />
           </ProtectedRoute>
@@ -153,7 +153,7 @@ function App() {
 
           <ProtectedRoute
             exact
-            path='/homepage'
+            path='/top-performers'
             >
               <Homepage />
           </ProtectedRoute>

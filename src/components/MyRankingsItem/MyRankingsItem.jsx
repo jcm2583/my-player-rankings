@@ -63,7 +63,7 @@ function MyRankingsItem({ player }) {
 
     return (
         <TableRow>
-            <TableCell>{player?.overall_rank}</TableCell>
+            <TableCell style={{color: "#f37e21"}}>{player?.overall_rank}</TableCell>
             <TableCell><a href={player?.stats_url}
                 target="_blank"
                 className="playerLink"

@@ -15,6 +15,9 @@ function MyRankings () {
     //declare dispatch
     const dispatch = useDispatch();
 
+    //bring in username for welcoming
+    const user = useSelector(store => store.user);
+
     //will need local states for inputs
     const [overallRank, setOverallRank] = useState('');
     const [positionRank, setPositionRank] = useState('');
@@ -58,7 +61,7 @@ function MyRankings () {
     return (
     <div> 
         <div>
-            <h2>Welcome to the My Rankings page!</h2>
+            <h2>Hello, {user.username}!</h2>
             <h3 className="centerText">Use the Consensus Rankings table on the bottom of the page to add players!</h3>
             <h3 className="centerText">Or fill out the form below to add a player that you don't see on the Consensus Rankings table</h3>
             <h3 className="centerText">Once you have some players added to your table, start ranking them!</h3>

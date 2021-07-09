@@ -51,8 +51,8 @@ function Homepage() {
 
     return (
         <div>
-            <h2>Welcome, {user.username}!</h2>
-            <h3 className="centerText">Below you can view some of the top fantasy performers of the 2020 season or click on any of the links above</h3>
+            <h2>Welcome to the Top Performers page!</h2>
+            <h3 className="centerText">Below you can view some of the top fantasy performers of the 2020 season</h3>
             <h2 className="pageHeader">Top 5 fantasy finishers in 2020 by position (PPR)</h2>
             <Grid container spacing={4} className={classes.gridContainer}>
                 {players.map((player, i) => {
@@ -68,6 +68,7 @@ function Homepage() {
                                 <CardContent className={classes.text}>
                                     <Typography>{player.finish}</Typography>
                                     <Typography>{player.total_points} pts</Typography>
+                                    <Typography>{player.avg_pts} pts per game</Typography>
                                 </CardContent>
                             </Card>
                         </Grid>
