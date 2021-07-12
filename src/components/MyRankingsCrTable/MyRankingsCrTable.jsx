@@ -83,7 +83,9 @@ function MyRankingsCrTable () {
                 maxWidth: 950
             },
             tableHeaderCell: {
-                fontWeight: 'bold'
+                fontWeight: 'bold',
+                backgroundColor: '#2196f3',
+                color: '#000000',
             }
         })
     
@@ -98,7 +100,8 @@ function MyRankingsCrTable () {
     return ( 
     <div>
         <div className="centerTable">
-            <h2>Dynasty: Consensus Ranked Players</h2>
+            <h2 className="spacing">Dynasty: Consensus Ranked Players</h2>
+            <h3>Click on the icon to add players to your rankings</h3>
             <Paper className={classes.root}>
             <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered>
                 <Tab label="All" onClick={fetchAll} />

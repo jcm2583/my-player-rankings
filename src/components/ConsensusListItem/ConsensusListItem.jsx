@@ -6,7 +6,8 @@ function ConsensusListItem ({player}) {
     return (
         <TableRow>
             <TableCell>{player?.overall_rank}</TableCell>
-            <TableCell><a href={player?.stats_url}
+            <TableCell>
+            <a href={player?.stats_url}
              target="_blank" 
              className="playerLink"
              >{player?.first_name} {player?.last_name}</a><Typography>#{player?.number}</Typography></TableCell>

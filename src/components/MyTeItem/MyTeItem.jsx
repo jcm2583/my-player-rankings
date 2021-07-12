@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Button from '@material-ui/core/Button';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import Swal from 'sweetalert2';
 
 function MyTeItem ({player}) {
@@ -15,21 +16,26 @@ function MyTeItem ({player}) {
                 title: 'Remove Player',
                 text: "Are you sure you want to remove player?",
                 icon: 'warning',
+                iconColor: '#f37e21',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                background: '#fafafa',
+                confirmButtonColor: '#2196f3',
+                cancelButtonColor: '#f37e21',
                 confirmButtonText: 'Yes, remove player!'
-              }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
                     dispatch({
                         type: 'REMOVE_PLAYER',
                         payload: {player, pos: 'te'}
                     });
-                  Swal.fire(
-                    'Removed!',
-                    'The selected player has been removed.',
-                    'success'
-                  )
+                  Swal.fire({
+                    title: 'Removed!',
+                    text: 'The selected player has been removed.',
+                    icon: 'success',
+                    iconColor: '#f37e21',
+                    background: '#c7c7c7',
+                    confirmButtonColor: '#2196f3',
+                  })
                 }
               });
         }
@@ -60,10 +66,25 @@ function MyTeItem ({player}) {
         >{player?.first_name} {player?.last_name}</a><Typography>#{player?.number}</Typography></TableCell>
         <TableCell>{player?.position}</TableCell>
         <TableCell>{player?.team}</TableCell>
-        <TableCell>{player?.position}{player?.position_rank}</TableCell>
-        <TableCell><Button startIcon={<KeyboardArrowUpIcon />} onClick={() => increaseTeRank(player)}></Button></TableCell>
-        <TableCell><Button startIcon={<KeyboardArrowDownIcon />}onClick={() => decreaseTeRank(player)}></Button></TableCell>
-        <TableCell><button onClick={() => removePlayer(player)}>REMOVE</button></TableCell>
+        <TableCell style={{color: "#f37e21", fontWeight: 'bold'}}>{player?.position} {player?.position_rank}</TableCell>
+        <TableCell>
+            <Button 
+            startIcon={<KeyboardArrowUpIcon style={{color: "#2196f3", fontSize: 35}}/>} 
+            onClick={() => increaseTeRank(player)}>
+            </Button>
+        </TableCell>
+        <TableCell>
+            <Button 
+            startIcon={<KeyboardArrowDownIcon style={{color: "#2196f3", fontSize: 35}} />}
+            onClick={() => decreaseTeRank(player)}>
+            </Button>
+        </TableCell>
+        <TableCell>
+            <Button 
+            onClick={() => removePlayer(player)}
+            startIcon={<RemoveCircleOutlineIcon style={{color: "#f37e21", fontSize: 35}} />}>
+            </Button>
+        </TableCell>
     </TableRow>
 )
     

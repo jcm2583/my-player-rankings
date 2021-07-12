@@ -16,7 +16,7 @@ function LandingPage() {
 
   return (
     <div className="container">
-      <h2>Welcome to Co-Manager</h2>
+      <h2>Welcome to My Player Rankings</h2>
 
       <div className="grid">
         <div className="grid-col grid-col_8">

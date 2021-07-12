@@ -84,7 +84,9 @@ function MyTeRankings () {
             maxWidth: 950
         },
         tableHeaderCell: {
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            backgroundColor: '#2196f3',
+            color: '#000000',
         }
     })
 
@@ -110,10 +112,10 @@ function MyTeRankings () {
                         <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
-                        <TableCell>Increase Position Rank</TableCell>
-                        <TableCell>Decrease Position Rank</TableCell>
-                        <TableCell></TableCell>
+                        <TableCell style={{backgroundColor: "#f37e21", fontWeight: 'bold'}}>Position Rank</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Increase Position Rank</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Decrease Position Rank</TableCell>
+                        <TableCell style={{backgroundColor: "#f37e21"}}></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

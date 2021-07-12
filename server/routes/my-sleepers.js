@@ -10,7 +10,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user is', req.user);
     
     //need to define query to retrieve from database
-    const queryText = `INSERT INTO "watchlist" ("first_name", "last_name", "position", "team", "notes", "image_url", "user_id")
+    const queryText = `INSERT INTO "my_sleepers" ("first_name", "last_name", "position", "team", "notes", "image_url", "user_id")
     VALUES ($1, $2, $3, $4, $5, $6, $7);`;
 
     //use pool to send the request to the database
@@ -29,8 +29,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 router.get('/', (req, res) => {
     if(req.isAuthenticated()) {
     //define query to send to database
-    const queryText = `SELECT * FROM "watchlist" WHERE "user_id" = $1
-    ORDER BY "last_name" ASC;`;
+    const queryText = `SELECT * FROM "my_sleepers" WHERE "user_id" = $1
+    ORDER BY "position" ASC;`;
         
     //use pool to send request to database
     pool
@@ -53,7 +53,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('req.user is', req.user);
     
     //define query text of what to delete
-    const queryText = `DELETE FROM "watchlist" WHERE "id" = $1 AND "user_id" = $2;`
+    const queryText = `DELETE FROM "my_sleepers" WHERE "id" = $1 AND "user_id" = $2;`
 
     //use pool to send the data to the database
     pool

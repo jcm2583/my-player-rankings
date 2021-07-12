@@ -38,6 +38,7 @@ function LoginForm() {
           <TextField
             type="text"
             label="username"
+            style={{marginLeft: 80}}
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
@@ -49,6 +50,7 @@ function LoginForm() {
           <TextField
             type="password"
             label="password"
+            style={{marginLeft: 80, marginBottom: 16}}
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}

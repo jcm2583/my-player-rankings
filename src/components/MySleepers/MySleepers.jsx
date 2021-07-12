@@ -3,19 +3,20 @@ import { useState, useEffect } from 'react';
 import { Grid, MenuItem, Select, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import MyWatchlistItem from '../MyWatchlistItem/MyWatchlistItem';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import MySleeperItem from '../MySleeperItem/MySleeperItem';
 
-function MyWatchlist () {
+function MySleepers () {
 
     //declare dispatch
     const dispatch = useDispatch();
 
     //bring in players from my watchlist reducer
-    const players = useSelector(store => store.myWatchlistReducer);
+    const players = useSelector(store => store.mySleepersReducer);
     
     useEffect(() => {
         dispatch({
-            type: 'FETCH_WATCHLIST',
+            type: 'FETCH_MY_SLEEPERS',
         });
     }, []);
 
@@ -42,7 +43,7 @@ function MyWatchlist () {
         }
 
         dispatch({
-            type: 'ADD_TO_WATCHLIST',
+            type: 'ADD_TO_MY_SLEEPERS',
             payload: playerObject
         });
 
@@ -83,24 +84,33 @@ function MyWatchlist () {
         
     <div>   
         <div>
+            <h2>Welcome to the My Sleepers Page!</h2>
+            <h3 className="centerText">Fill out the form below to add players to keep an eye on as the season progresses</h3>
+            <h3 className="centerText2">Add an image if you like, and don't forget to add notes!</h3>
+            
             <form onSubmit={handleSubmit}>
 
                 <TextField 
                 type="text" 
-                label="First Name" 
+                label="First Name"
+                variant="outlined"
+                style={{marginLeft: 80, marginTop: 32}} 
                 value={firstName}
                 onChange={(evt) => setFirstName(evt.target.value)}/>
                 
-
                 <TextField 
                 type="text" 
                 label="Last Name"
+                variant="outlined"
+                style={{marginLeft: 32, marginTop: 32}}
                 value={lastName} 
                 onChange={(evt) => setLastName(evt.target.value)} />
 
                 <Select 
                 value={position}
+                style={{marginLeft: 32, marginTop: 32, marginBottom: 32}}
                 displayEmpty 
+                variant="outlined"
                 onChange={(evt) => setPostion(evt.target.value)}>
                     <MenuItem value="" disabled>Position</MenuItem>
                     <MenuItem value="QB">QB</MenuItem>
@@ -112,25 +122,32 @@ function MyWatchlist () {
                 <TextField 
                 type="text" 
                 label="Team"
+                variant="outlined"
+                style={{marginLeft: 32, marginTop: 32}}
                 value={team}
                 onChange={(evt) => setTeam(evt.target.value)}/>
 
                 <TextField 
                 type="text" 
                 label="Notes"
+                variant="outlined"
+                style={{marginLeft: 32, marginTop: 32}}
                 multiline 
                 value={notes}
                 onChange={(evt) => setNotes(evt.target.value)}/>
 
                 <TextField 
                 type="text" 
-                label="Image URL" 
+                label="Image URL"
+                variant="outlined" 
+                style={{marginLeft: 32, marginTop: 32}}
                 value={image}
                 onChange={(evt) => setImage(evt.target.value)}/>
 
                 <Button
                 variant="contained"
-                color="primary" 
+                style={{backgroundColor: '#2196f3', fontFamily: `"Optima", sans-serif`, marginLeft: 650}} 
+                startIcon={<AddCircleOutlineIcon />}
                 type="submit">Add Player</Button>
 
             </form>
@@ -138,7 +155,7 @@ function MyWatchlist () {
 
         <Grid container spacing={4} className={classes.gridContainer}>
             {players.map ((player, i) => {
-                return <MyWatchlistItem key={i} player={player}/>
+                return <MySleeperItem key={i} player={player}/>
             })}
         </Grid>
 
@@ -146,4 +163,4 @@ function MyWatchlist () {
     )
 }
 
-export default MyWatchlist;
+export default MySleepers;

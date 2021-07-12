@@ -17,7 +17,11 @@ function MyRankingsCrItem ({player}) {
             payload: player,
         });
         //alert user that they player has been added
-        Swal.fire('Player added!')
+        Swal.fire({
+            title: 'Player added!',
+            background: '#fafafa',
+            confirmButtonColor: '#2196f3',
+        })
     }
 
     return (
@@ -30,7 +34,9 @@ function MyRankingsCrItem ({player}) {
             <TableCell>{player?.position}</TableCell>
             <TableCell>{player?.team}</TableCell>
             <TableCell>{player?.position}{player?.position_rank}</TableCell>
-            <TableCell><Button startIcon={<AddCircleOutlineIcon />} onClick={() => addMyPlayer(player)}>My Rankings</Button></TableCell>
+            <TableCell><Button
+            startIcon={<AddCircleOutlineIcon style={{color: '#2196f3', fontSize: 35}}/>}
+            onClick={() => addMyPlayer(player)}></Button></TableCell>
         </TableRow>
     )
 }

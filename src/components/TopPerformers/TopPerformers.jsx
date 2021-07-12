@@ -2,28 +2,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Card, CardHeader, CardContent, CardMedia, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import './Homepage.css';
+import './TopPerformers.css';
 
-function Homepage() {
+function TopPerformers() {
 
     //define dispatch
     const dispatch = useDispatch();
 
-    //bring in username for welcoming
-    const user = useSelector(store => store.user);
-
     //bring in homepage data from reducer
-    const players = useSelector(store => store.homepageReducer);
+    const players = useSelector(store => store.topPerformersReducer);
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_HOMEPAGE',
+            type: 'FETCH_TOP_PERFORMERS',
         });
     }, []);
 
     const useStyles = makeStyles({
         root: {
             minWidth: 250,
+            border: 'solid',
+            borderColor: '#0069c0',
+            borderRadius: 8,
         },
         gridContainer: {
             paddingLeft: "80px",
@@ -48,8 +48,8 @@ function Homepage() {
 
     return (
         <div>
-            <h2>Welcome, {user.username}!</h2>
-            <h3 className="centerText">Below you can view some of the top fantasy performers of the 2020 season or click on any of the links above</h3>
+            <h2>Welcome to the Top Performers page!</h2>
+            <h3 className="centerText">Below you can view some of the top fantasy performers of the 2020 season</h3>
             <h2 className="pageHeader">Top 5 fantasy finishers in 2020 by position (PPR)</h2>
             <Grid container spacing={4} className={classes.gridContainer}>
                 {players.map((player, i) => {
@@ -65,6 +65,7 @@ function Homepage() {
                                 <CardContent className={classes.text}>
                                     <Typography>{player.finish}</Typography>
                                     <Typography>{player.total_points} pts</Typography>
+                                    <Typography>{player.avg_pts} pts per game</Typography>
                                 </CardContent>
                             </Card>
                         </Grid>
@@ -75,4 +76,4 @@ function Homepage() {
     )
 }
 
-export default Homepage;
+export default TopPerformers;

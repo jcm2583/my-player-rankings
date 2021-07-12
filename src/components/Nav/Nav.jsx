@@ -20,7 +20,7 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Co-Manager</h2>
+        <h2 className="nav-title">MPR</h2>
       </Link>
       <div>
         {/* <Link className="navLink" to={loginLinkData.path}>
@@ -29,14 +29,14 @@ function Nav() {
 
         {user.id && (
           <>
+            <Link className="navLink" to='/top-performers'>
+              Top Performers
+            </Link>
             <Link className="navLink" to="/consensus-rankings">
               Consensus Rankings
             </Link>
-            <Link className="navLink" to="/my-rankings">
-              My Rankings
-            </Link>
-            <Link className="navLink" to="/my-watchlist"
-            >My Watchlist
+            <Link className="navLink" to="/my-sleepers"
+            >My Sleepers
             </Link>
             <LogOutButton className="navLink" />
           </>
