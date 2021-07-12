@@ -27,8 +27,8 @@ import MyQbRankings from '../MyQbRankings/MyQbRankings';
 import MyRbRankings from '../MyRbRankings/MyRbRankings';
 import MyWrRankings from '../MyWrRankings/MyWrRankings';
 import MyTeRankings from '../MyTeRankings/MyTeRankings';
-import MyWatchlist from '../MyWatchlist/MyWatchlist';
-import Homepage from '../Homepage/Homepage';
+import MySleepers from '../MySleepers/MySleepers';
+import TopPerformers from '../TopPerformers/TopPerformers';
 
 function App() {
   const dispatch = useDispatch();
@@ -146,16 +146,16 @@ function App() {
 
           <ProtectedRoute
             exact
-            path='/my-watchlist'
+            path='/my-sleepers'
             >
-            <MyWatchlist />
+            <MySleepers />
           </ProtectedRoute>
 
           <ProtectedRoute
             exact
             path='/top-performers'
             >
-              <Homepage />
+              <TopPerformers />
           </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

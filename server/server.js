@@ -11,8 +11,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const consensusRankings = require('./routes/consensus-rankings');
 const myRankings = require('./routes/my-rankings');
-const myWatchlist = require('./routes/my-watchlist');
-const homepage = require('./routes/homepage')
+const mySleepers = require('./routes/my-sleepers');
+const topPerformers = require('./routes/top-performers')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,8 +29,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/consensus-rankings', consensusRankings)
 app.use('/api/my-rankings', myRankings)
-app.use('/api/my-watchlist', myWatchlist)
-app.use('/api/homepage', homepage);
+app.use('/api/my-sleepers', mySleepers)
+app.use('/api/top-performers', topPerformers);
 // Serve static files
 app.use(express.static('build'));
 
@@ -41,3 +41,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
+
+module.exports = app;

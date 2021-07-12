@@ -1,11 +1,11 @@
 //create a reducer to store the homepage data
-const homepageReducer = (state = [], action) => {
+const topPerformersReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_HOMEPAGE' :
+        case 'SET_TOP_PERFORMERS' :
             return action.payload
         default :
             return state;
     }
 }
 
-export default homepageReducer;
+export default topPerformersReducer;

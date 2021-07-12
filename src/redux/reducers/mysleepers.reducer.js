@@ -1,10 +1,10 @@
 //create a reducer to store players for my watchlist
-const myWatchlistReducer = (state = [], action) => {
+const mySleepersReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_WATCHLIST' :
+        case 'SET_MY_SLEEPERS' :
             return action.payload
         default: return state;
     }
 }
 
-export default myWatchlistReducer;
+export default mySleepersReducer;

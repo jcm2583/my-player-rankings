@@ -4,19 +4,19 @@ import { Grid, MenuItem, Select, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import MyWatchlistItem from '../MyWatchlistItem/MyWatchlistItem';
+import MySleeperItem from '../MySleeperItem/MySleeperItem';
 
-function MyWatchlist () {
+function MySleepers () {
 
     //declare dispatch
     const dispatch = useDispatch();
 
     //bring in players from my watchlist reducer
-    const players = useSelector(store => store.myWatchlistReducer);
+    const players = useSelector(store => store.mySleepersReducer);
     
     useEffect(() => {
         dispatch({
-            type: 'FETCH_WATCHLIST',
+            type: 'FETCH_MY_SLEEPERS',
         });
     }, []);
 
@@ -43,7 +43,7 @@ function MyWatchlist () {
         }
 
         dispatch({
-            type: 'ADD_TO_WATCHLIST',
+            type: 'ADD_TO_MY_SLEEPERS',
             payload: playerObject
         });
 
@@ -84,7 +84,7 @@ function MyWatchlist () {
         
     <div>   
         <div>
-            <h2>Welcome to the My Watchlist Page!</h2>
+            <h2>Welcome to the My Sleepers Page!</h2>
             <h3 className="centerText">Fill out the form below to add players to keep an eye on as the season progresses</h3>
             <h3 className="centerText2">Add an image if you like, and don't forget to add notes!</h3>
             
@@ -155,7 +155,7 @@ function MyWatchlist () {
 
         <Grid container spacing={4} className={classes.gridContainer}>
             {players.map ((player, i) => {
-                return <MyWatchlistItem key={i} player={player}/>
+                return <MySleeperItem key={i} player={player}/>
             })}
         </Grid>
 
@@ -163,4 +163,4 @@ function MyWatchlist () {
     )
 }
 
-export default MyWatchlist;
+export default MySleepers;

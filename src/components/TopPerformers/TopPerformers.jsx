@@ -2,22 +2,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Card, CardHeader, CardContent, CardMedia, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import './Homepage.css';
+import './TopPerformers.css';
 
-function Homepage() {
+function TopPerformers() {
 
     //define dispatch
     const dispatch = useDispatch();
 
-    //bring in username for welcoming
-    const user = useSelector(store => store.user);
-
     //bring in homepage data from reducer
-    const players = useSelector(store => store.homepageReducer);
+    const players = useSelector(store => store.topPerformersReducer);
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_HOMEPAGE',
+            type: 'FETCH_TOP_PERFORMERS',
         });
     }, []);
 
@@ -79,4 +76,4 @@ function Homepage() {
     )
 }
 
-export default Homepage;
+export default TopPerformers;

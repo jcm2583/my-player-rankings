@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Swal from 'sweetalert2';
 
-function MyWatchlistItem ({player}) {
+function MySleeperItem ({player}) {
 
     //define dispatch
     const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function MyWatchlistItem ({player}) {
           }).then((result) => {
             if (result.isConfirmed) {
                 dispatch({
-                    type: 'REMOVE_WL_PLAYER',
+                    type: 'REMOVE_SLEEPER_PLAYER',
                     payload: player 
                 });
               Swal.fire({
@@ -101,4 +101,4 @@ function MyWatchlistItem ({player}) {
     )
 }
 
-export default MyWatchlistItem;
+export default MySleeperItem;

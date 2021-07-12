@@ -114,7 +114,7 @@ function MyRbRankings () {
                         <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>
-                        <TableCell style={{backgroundColor: "#f37e21"}}>Position Rank</TableCell>
+                        <TableCell style={{backgroundColor: "#f37e21", fontWeight: 'bold'}}>Position Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Increase Position Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Decrease Position Rank</TableCell>
                         <TableCell style={{backgroundColor: "#f37e21"}}></TableCell>

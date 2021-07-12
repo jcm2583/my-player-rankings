@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     if (req.isAuthenticated()) {
     //define queryText for database
-    const queryText = `SELECT * FROM "homepage" ORDER BY "id";`;
+    const queryText = `SELECT * FROM "top_performers" ORDER BY "id";`;
     //use pool to send to database
     pool
     .query(queryText)

@@ -4,8 +4,8 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import crPlayerSaga from './crrankings.saga';
 import myRankingsSaga from './myrankings.saga';
-import myWatchlistSaga from './mywatchlist.saga';
-import homepageSaga from './homepage.saga';
+import mySleepersSaga from './mysleepers.saga';
+import topPerformersSaga from './topperformers.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,7 +21,7 @@ export default function* rootSaga() {
     userSaga(),
     crPlayerSaga(),
     myRankingsSaga(),
-    myWatchlistSaga(),
-    homepageSaga(),
+    mySleepersSaga(),
+    topPerformersSaga(),
   ]);
 }

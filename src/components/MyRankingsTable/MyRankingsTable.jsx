@@ -108,7 +108,7 @@ function MyRankingsTable () {
                 <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell style={{backgroundColor: "#f37e21"}}>Overall Rank</TableCell>
+                        <TableCell style={{backgroundColor: "#f37e21", fontWeight: 'bold'}}>Overall Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Team</TableCell>

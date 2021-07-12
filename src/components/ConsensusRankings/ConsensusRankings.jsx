@@ -3,7 +3,7 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import './ConsensusRankings.css';
 import { makeStyles } from '@material-ui/core/styles';
-import { Tab, Tabs, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
+import { Tab, Tabs, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow, TablePagination, Paper, Page } from '@material-ui/core'; 
 import ConsensusListItem from '../ConsensusListItem/ConsensusListItem';
 
 function ConsensusRankings () {
@@ -94,8 +94,8 @@ function ConsensusRankings () {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
-      };
-
+    };
+        
     return ( 
     
     <div>
