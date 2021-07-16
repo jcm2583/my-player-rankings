@@ -4,7 +4,7 @@
 
 _Duration: 2 Weeks_
 
-Fantasy football is an extremely popular industry with many resources offering rankings on which players will perform the best, yet there are not a lot of resources that allow a user to voice their own opinion and create their own player rankings list. I created MPR to be an interactive fantasy football application that aims to solve this issue by offering user interaction. A user can view player stats, create and edit a player rankings list, and keep track of selected players through a sleeper list. A user can create their own profile using a login and registration so that it is personalized to thier choices. 
+Fantasy football is an extremely popular industry with many resources offering rankings on which players will perform the best, yet there are not a lot of resources that allow a user to voice their own opinion and create their own player rankings list. I created MPR to be an interactive fantasy football application that aims to solve this issue by offering user interaction. A user can view player stats, create and edit a player rankings list, and keep track of selected players through a sleeper list. A user can create their own profile using a login and registration so that it is personalized to their choices. 
 
 To see the fully functional site, please visit: [MPR](https://my-player-rankings.herokuapp.com/)
 
