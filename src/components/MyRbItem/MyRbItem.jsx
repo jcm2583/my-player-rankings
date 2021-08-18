@@ -1,4 +1,4 @@
-import { TableCell, TableRow, Typography } from '@material-ui/core';
+import { Link, TableCell, TableRow, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
@@ -61,14 +61,11 @@ function MyRbItem ({player}) {
 
     return (
         <TableRow>
-        <TableCell>{player?.overall_rank}</TableCell>
+        <TableCell style={{color: "#f37e21", fontWeight: 'bold'}}>{player?.position} {player?.position_rank}</TableCell>
         <TableCell><a href={player?.stats_url}
             target="_blank"
             className="playerLink"
         >{player?.first_name} {player?.last_name}</a><Typography>#{player?.number}</Typography></TableCell>
-        <TableCell>{player?.position}</TableCell>
-        <TableCell>{player?.team}</TableCell>
-        <TableCell style={{color: "#f37e21", fontWeight: 'bold'}}>{player?.position} {player?.position_rank}</TableCell>
         <TableCell>
             <Button 
             startIcon={<KeyboardArrowUpIcon style={{color: "#2196f3", fontSize: 35}} />} 
@@ -80,7 +77,9 @@ function MyRbItem ({player}) {
             startIcon={<KeyboardArrowDownIcon style={{color: "#2196f3", fontSize: 35}} />}
             onClick={() => decreaseRbRank(player)}>
             </Button>
-        </TableCell>
+        </TableCell>               
+        <TableCell>{player?.overall_rank}</TableCell>
+        <TableCell>{player?.team}</TableCell>
         <TableCell>
             <Button 
             onClick={() => removePlayer(player)}

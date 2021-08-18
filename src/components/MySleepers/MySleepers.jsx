@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import MySleeperItem from '../MySleeperItem/MySleeperItem';
+import './MySleepers.css';
 
 function MySleepers () {
 
@@ -88,13 +89,13 @@ function MySleepers () {
             <h3 className="centerText">Fill out the form below to add players to keep an eye on as the season progresses</h3>
             <h3 className="centerText2">Add an image if you like, and don't forget to add notes!</h3>
             
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="flexContainer">
 
                 <TextField 
                 type="text" 
                 label="First Name"
                 variant="outlined"
-                style={{marginLeft: 80, marginTop: 32}} 
+                style={{marginTop: 16}} 
                 value={firstName}
                 onChange={(evt) => setFirstName(evt.target.value)}/>
                 
@@ -102,13 +103,13 @@ function MySleepers () {
                 type="text" 
                 label="Last Name"
                 variant="outlined"
-                style={{marginLeft: 32, marginTop: 32}}
+                style={{marginTop: 16}}
                 value={lastName} 
                 onChange={(evt) => setLastName(evt.target.value)} />
 
                 <Select 
                 value={position}
-                style={{marginLeft: 32, marginTop: 32, marginBottom: 32}}
+                style={{marginTop: 16}}
                 displayEmpty 
                 variant="outlined"
                 onChange={(evt) => setPostion(evt.target.value)}>
@@ -123,7 +124,7 @@ function MySleepers () {
                 type="text" 
                 label="Team"
                 variant="outlined"
-                style={{marginLeft: 32, marginTop: 32}}
+                style={{marginTop: 16}}
                 value={team}
                 onChange={(evt) => setTeam(evt.target.value)}/>
 
@@ -131,7 +132,7 @@ function MySleepers () {
                 type="text" 
                 label="Notes"
                 variant="outlined"
-                style={{marginLeft: 32, marginTop: 32}}
+                style={{marginTop: 16}}
                 multiline 
                 value={notes}
                 onChange={(evt) => setNotes(evt.target.value)}/>
@@ -140,13 +141,13 @@ function MySleepers () {
                 type="text" 
                 label="Image URL"
                 variant="outlined" 
-                style={{marginLeft: 32, marginTop: 32}}
+                style={{marginTop: 16}}
                 value={image}
                 onChange={(evt) => setImage(evt.target.value)}/>
 
                 <Button
                 variant="contained"
-                style={{backgroundColor: '#2196f3', fontFamily: `"Optima", sans-serif`, marginLeft: 650}} 
+                style={{backgroundColor: '#2196f3', fontFamily: `"Optima", sans-serif`, marginTop: 16}} 
                 startIcon={<AddCircleOutlineIcon />}
                 type="submit">Add Player</Button>
 

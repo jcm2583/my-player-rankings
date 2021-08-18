@@ -1,12 +1,11 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 import MyRankingsCrTable from '../MyRankingsCrTable/MyRankingsCrTable';
-import './MyRankings.css';
 import MyRankingsTable from '../MyRankingsTable/MyRankingsTable';
 import { MenuItem, Select, TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-
+import './MyRankings.css';
 
 
 function MyRankings () {
@@ -65,13 +64,12 @@ function MyRankings () {
             <h3 className="centerText">Or fill out the form below to add a player that you don't see on the Consensus Rankings table</h3>
             <h3 className="centerText">Once you have some players added to your table, start ranking them!</h3>
             
-            <div className="flexContainer">
+            
             <form onSubmit={handleSubmit} className="flexContainer">
                 <TextField 
                 type="text" 
                 label="First Name"
                 required
-                style={{marginTop: 16}}
                 value={firstName}
                 onChange={(evt) => setFirstName(evt.target.value)}/>
 
@@ -79,7 +77,7 @@ function MyRankings () {
                 type="text" 
                 label="Last Name"
                 required
-                style={{marginTop: 16}}
+                style={{marginTop: 8}}
                 value={lastName}
                 onChange={(evt) => setLastName(evt.target.value)}/>
 
@@ -87,13 +85,13 @@ function MyRankings () {
                 type="number" 
                 label="Number"
                 required
-                style={{marginTop: 16, width: 88}}
+                style={{marginTop: 8, width: 88}}
                 value={number}
                 onChange={(evt) => setNumber(evt.target.value)}/>
 
                 <Select
                 value={position}
-                style={{marginTop: 32}}
+                style={{marginTop: 16}}
                 required
                 displayEmpty
                 onChange={(evt) => setPosition(evt.target.value)}>
@@ -107,7 +105,7 @@ function MyRankings () {
                 <TextField 
                 type="text" 
                 label="Team"
-                style={{marginTop: 16}}
+                style={{marginTop: 8}}
                 value={team}
                 onChange={(evt) => setTeam(evt.target.value)} />
 
@@ -115,7 +113,7 @@ function MyRankings () {
                 type="number" 
                 label="Overall Rank"
                 required
-                style={{marginTop: 16, width: 116}}
+                style={{marginTop: 8, width: 116}}
                 value={overallRank}
                 onChange={(evt) => setOverallRank(evt.target.value)} />
                 
@@ -123,23 +121,22 @@ function MyRankings () {
                 type="number" 
                 label="Position Rank"
                 required
-                style={{marginTop: 16, width: 128}}
+                style={{marginTop: 8, width: 128}}
                 value={positionRank}
                 onChange={(evt) => setPositionRank(evt.target.value)} />
 
                 <TextField 
                 type="text" 
                 label="Player Page URL"
-                style={{marginTop: 16}}
+                style={{marginTop: 8}}
                 value={playerUrl}
                 onChange={(evt) => setPlayerUrl(evt.target.value)} />
                 <Button 
                 variant="contained"
-                style={{backgroundColor: "#2196f3", fontFamily: `"Optima", sans-serif`, marginTop: 16, marginBottom: 32}}
+                style={{backgroundColor: "#2196f3", fontFamily: `"Optima", sans-serif`, marginTop: 8, marginBottom: 32}}
                 type="submit" 
                 startIcon={<AddCircleOutlineIcon />}>Add Player</Button>
             </form>
-            </div>
 
         </div>
         <div>

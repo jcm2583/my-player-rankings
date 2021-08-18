@@ -110,12 +110,11 @@ function MyRankingsTable () {
                     <TableRow>
                         <TableCell style={{backgroundColor: "#f37e21", fontWeight: 'bold'}}>Overall Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Position</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Team</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Increase Overall Rank</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Decrease Overall Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Position Rank</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Increase Rank</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Decrease Rank</TableCell>
-                        <TableCell style={{backgroundColor: "#f37e21"}}></TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Team</TableCell>
+                        <TableCell style={{backgroundColor: "#f37e21", fontWeight: 'bold'}}>Remove Player</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
