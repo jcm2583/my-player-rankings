@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm';
 
 function LandingPage() {
@@ -15,17 +14,16 @@ function LandingPage() {
   };
 
   return (
-    <div className="container">
-      <h2>Welcome to My Player Rankings</h2>
+    <div>
+      <h2 className="centerText">Welcome to My Player Rankings</h2>
 
       <div className="grid">
-        <div className="grid-col grid-col_8">
+        <div className="centerText">
           <p>
             A web application designed to assist your fantasy football opinions.
           </p>
         </div>
-        <div className="grid-col grid-col_4">
-          {/* <RegisterForm /> */}
+        <div>
         <LoginForm />
           <center>
             <h4>Don't Have An Account?</h4>
