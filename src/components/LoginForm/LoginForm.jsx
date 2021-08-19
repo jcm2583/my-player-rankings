@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import { TextField } from '@material-ui/core';
+import './LoginForm.css'
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -27,7 +28,7 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+      <h2 className="centerText">Login</h2>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
@@ -38,7 +39,6 @@ function LoginForm() {
           <TextField
             type="text"
             label="username"
-            style={{marginLeft: 80}}
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
@@ -50,14 +50,13 @@ function LoginForm() {
           <TextField
             type="password"
             label="password"
-            style={{marginLeft: 80, marginBottom: 16}}
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
       </div>
-      <div>
+      <div className="centerText">
         <input className="btn" type="submit" name="submit" value="Log In" />
       </div>
     </form>
