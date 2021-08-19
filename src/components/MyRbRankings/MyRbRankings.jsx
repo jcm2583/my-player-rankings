@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'; 
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import MyRbItem from '../MyRbItem/MyRbItem';
@@ -110,14 +108,13 @@ function MyRbRankings () {
                 <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell className={classes.tableHeaderCell}>Overall Rank</TableCell>
+                    <TableCell style={{backgroundColor: "#f37e21", fontWeight: 'bold'}}>Position Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Player Name</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Position</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Team</TableCell>
-                        <TableCell style={{backgroundColor: "#f37e21", fontWeight: 'bold'}}>Position Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Increase Position Rank</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Decrease Position Rank</TableCell>
-                        <TableCell style={{backgroundColor: "#f37e21"}}></TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Overall Rank</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Team</TableCell>
+                        <TableCell style={{backgroundColor: "#f37e21", fontWeight: 'bold'}}>Remove Player</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

@@ -68,9 +68,6 @@ function MyRankingsItem({ player }) {
                 target="_blank"
                 className="playerLink"
             >{player?.first_name} {player?.last_name}</a><Typography>#{player?.number}</Typography></TableCell>
-            <TableCell>{player?.position}</TableCell>
-            <TableCell>{player?.team}</TableCell>
-            <TableCell>{player?.position}{player?.position_rank}</TableCell>
             <TableCell>
                 <Button 
                 startIcon={<KeyboardArrowUpIcon style={{color: "#2196f3", fontSize: 35}}/>} 
@@ -83,6 +80,8 @@ function MyRankingsItem({ player }) {
                 onClick={() => decreaseRank(player)}>
                 </Button>
             </TableCell>
+            <TableCell>{player?.position}{player?.position_rank}</TableCell>
+            <TableCell>{player?.team}</TableCell>
             <TableCell>
                 <Button 
                 onClick={() => removePlayer(player)} 

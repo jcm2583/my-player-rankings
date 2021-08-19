@@ -23,9 +23,6 @@ function Nav() {
         <h2 className="nav-title">MPR</h2>
       </Link>
       <div>
-        {/* <Link className="navLink" to={loginLinkData.path}>
-          {loginLinkData.text}
-        </Link> */}
 
         {user.id && (
           <>
@@ -42,9 +39,6 @@ function Nav() {
           </>
         )}
 
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
